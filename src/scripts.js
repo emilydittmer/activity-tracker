@@ -8,13 +8,10 @@ let activityMinutesActive = document.querySelector('.main-bottom-right--activity
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
 
 window.addEventListener('load', updateOnLoad)
-let user = new User(userData[0]);
+let user = new User(userData[13]);
 let userRepository= new UserRepository(userData);
-console.log(userData);
-
 
 function updateOnLoad() {
-  console.log('userData', userData);
   updateUserName();
   updateStepCount();
   updateAverageStepCount();

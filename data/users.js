@@ -401,6 +401,6 @@
   }
 ]
 
-if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+if (typeof module !== 'undefined') {
   module.exports = userData;
 }
