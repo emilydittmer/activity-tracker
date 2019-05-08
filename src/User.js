@@ -2,17 +2,13 @@
 
 
 class User {
-  constructor(id, name, address, email, strideLength, dailyStepGoal) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.email = email;
-    this.strideLength = strideLength;
-    this.dailyStepGoal = dailyStepGoal;
+  constructor(userData) {
+    this.userData = userData;
+    
   } 
 
   returnFirstName() {
-    return this.name.split(' ').slice(0, -1).join(' ');
+    return this.userData.name.split(' ').slice(0, -1).join(' ');
   };
 
 }
