@@ -2,26 +2,26 @@
 
 
 class UserRepository {
-  constructor(users) {
-    this.users= users || [];
+  constructor(dataFilepath) {
+    this.dataFilepath = require(dataFilepath)
   }
 
   returnUserData(userID) {
-    let user = this.users.find((user) => {
+    let user = this.dataFilepath.find((user) => {
       return user.id === userID;
     })
     return user;
   }
 
   returnAverageStepGoal() {
-    let average = this.users.reduce((total, user) => {
-      return total += user.dailyStepGoal / this.users.length;
+    let average = this.dataFilepath.reduce((total, user) => {
+      return total += user.dailyStepGoal / this.dataFilepath.length;
     }, 0)
     return average;
   }
 
   returnAllUsersAddresses() {
-    let allAddresses = this.users.map((user) => {
+    let allAddresses = this.dataFilepath.map((user) => {
       return user.address;
     });
     return allAddresses;
