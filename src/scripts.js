@@ -19,6 +19,7 @@ function updateOnLoad() {
   updateStepCount();
   updateAverageStepCount();
   updateMostCommonState();
+  updateCompareStepCount();
 }
 
 function updateUserName() {
@@ -39,4 +40,9 @@ function updateAverageStepCount() {
 function updateMostCommonState() {
   let mostCommonState = document.querySelector('.main-top-right--common-trends-card--most-common-state-value');
   mostCommonState.innerHTML = userRepository.returnMostFrequentState();
+}
+
+function updateCompareStepCount() {
+  let stepCountComparison = document.querySelector('.main-top-center--goals-card--step-count-comparison-value');
+  stepCountComparison.innerHTML = userRepository.compareStepCounts();
 }
