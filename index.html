@@ -10,43 +10,43 @@
 </head>
   <body>
     <header>
-      <h1>Welcome to Activity Tracker, <span>${Name}</span>!</h1>
+      <h1>Welcome to Activity Tracker, <span class="user-name">${Name}</span>!</h1>
       <!-- <input>Date -->
     </header>
-      <aside>
-        <!--Button-->
-      </aside>
+<!--       <aside>
+        Button
+      </aside> -->
     <main>
-        <article class="main-top-left-date-card">
-        <p class="main-top-date">Date</p>
-        <form>
-          <input type="Date" name="date"></input>
-        </form>
-<!--         <button>BUTTON</button> -->
+        <article class="main-top-left--date-card">
+        <p class="main-top--date-card-title">Date</p>
+        <input class="main-top-left--date-input" type="Date" name="date"></input>
       </article>
-      <article>
-        <h2>Hydration</h2>
-        <h3>Number of Ounces: <span>#</span></h3>
+      <article class="main-bottom-left--hydration-card">
+        <h2 class="main-bottom--hydration-card--title">Hydration</h2>
+        <h3 class="main-bottom--hydration-card--number-of-ounces-key">Number of Ounces: <span class="main-bottom--hydration-card--number-of-ounces-value">#</span></h3>
       </article>
-      <article>
-        <h2>Goals</h2>
-        <h3>Step Count: <span>#</span></h3>
+      <article class="main-top-center--goals-card">
+        <h2 class="main-top-center--goals-card--title">Goals</h2>
+        <h3 class="main-top-center--goals-card--step-count-key">Step Count: <span class="main-top-center--step-count-value">#</span></h3>
       </article>
-      <article>
-        <h2>Sleep</h2>
-        <h3>Hours of Sleep: <span>#</span></h3>
-        <h3>Sleep Quality:<span>#</span></h3>
+      <article class="main-bottom-center--sleep-card">
+        <h2 class="main-bottom-center--sleep-card-title">Sleep</h2>
+        <h3 class="main-bottom-center--sleep-card--hours-of-sleep-key">Hours of Sleep: <span class="main-bottom-center--sleep-card--hours-of-sleep-value">#</span></h3>
+        <h3 class="main-bottom-center--sleep-card--sleep-quality-key">Sleep Quality:<span class="main-bottom-center--sleep-card--sleep-quality-value">#</span></h3>
       </article>
         <article>
         <h2>Motto</h2>
         <h3>Do your thing!</h3>
       </article>
-      <article>
-        <h2>Activity</h2>
-        <h3>Number of Steps: <span>#</span></h3>
-        <h3>Minutes Active:<span>#</span></h3>
-        <h3>Flights of Stairs:<span>#</span></h3>
+      <article class="main-bottom-right--activity-card">
+        <h2 class="main-bottom-right--activity-card--title">Activity</h2>
+        <h3 class="main-bottom-right--activity-card--number-of-steps-key">Number of Steps: <span class="main-bottom-right--activity-card--number-of-steps-value">#</span></h3>
+        <h3 class="main-bottom-right--activity-card--minutes-active-key">Minutes Active:<span class="main-bottom-right--activity-card--minutes-active-value">#</span></h3>
+        <h3 class="main-bottom-right--activity-card--flights-of-stairs-key">Flights of Stairs:<span class="main-bottom-right--activity-card--flights-of-stairs-value">#</span></h3>
       </article>
     </main>
+    <script src="UserRepository.js"></script>
+    <script src="User.js"></script>
+    <script src="scripts.js"></script>
   </body>
 </html>
