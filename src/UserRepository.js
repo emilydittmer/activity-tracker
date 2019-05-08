@@ -1,6 +1,3 @@
-// require dataFilepath ???
-
-
 class UserRepository {
   constructor(dataFilepath) {
     this.dataFilepath = require(dataFilepath)
@@ -41,4 +38,6 @@ class UserRepository {
   }
 }
 
-module.exports = UserRepository;
+if (typeof module === !undefined) {
+  module.exports = UserRepository;
+}

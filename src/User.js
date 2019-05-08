@@ -1,16 +1,14 @@
-//require userData ???
-
-
 class User {
   constructor(userData) {
     this.userData = userData;
-    
   } 
 
   returnFirstName() {
-    return this.userData.name.split(' ').slice(0, -1).join(' ');
+    let firstName = this.userData.name.split(' ');
+    return firstName[0];
   };
 
 }
-
-module.exports = User;
+if (typeof module === !undefined) {
+  module.exports = User;
+}
