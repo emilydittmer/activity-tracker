@@ -4,7 +4,6 @@ class UserRepository {
   }
 
   returnUserData(userID) {
-    console.log(this.dataFilepath)
     let user = this.dataFilepath.find((user) => {
       return user.id === userID;
     })
@@ -37,8 +36,18 @@ class UserRepository {
     let mostCommonState = this.returnAllStates();
     return mostCommonState.sort((a, b) => mostCommonState.filter(state => state === a).length - mostCommonState.filter(state => state === b).length).pop();
   }
+
+  compareStepCounts() {
+    if (user.userData.dailyStepGoal === this.returnAverageStepGoal()) {
+      return "equal to";
+    } else if (user.userData.dailyStepGoal > this.returnAverageStepGoal()){
+      return "greater than"
+    } else {
+      return "less than"
+    }
+  }
 }
 
-if (typeof module != 'undefined') {
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
   module.exports = UserRepository;
 }
