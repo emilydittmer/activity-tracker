@@ -1,9 +1,10 @@
 class UserRepository {
   constructor(dataFilepath) {
-    this.dataFilepath = require(dataFilepath)
+    this.dataFilepath = dataFilepath;
   }
 
   returnUserData(userID) {
+    console.log(this.dataFilepath)
     let user = this.dataFilepath.find((user) => {
       return user.id === userID;
     })
@@ -38,6 +39,6 @@ class UserRepository {
   }
 }
 
-if (typeof module === !undefined) {
+if (typeof module != 'undefined') {
   module.exports = UserRepository;
 }
