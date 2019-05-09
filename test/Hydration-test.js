@@ -20,9 +20,12 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   }); 
 
-  it('should keep track of the daily water intake of a user', function() {
-    expect(hydration.returnDailyWaterIntake(1, "06/05/2019")).to.equal(64);  
+  it('should keep track of the water intake of a user for a specific date', function() {
+    expect(hydration.returnWaterIntakeByDate(1, "06/05/2019")).to.equal(64);  
   });
 
+  it('should keep track of the average water intake of a user', function() {
+    expect(hydration.returnAverageWaterIntake(2)).to.equal(71);  
+  });
 
 });
