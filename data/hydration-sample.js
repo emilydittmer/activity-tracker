@@ -21,6 +21,14 @@ const hydrationDataSample = [
       {
         "date": "10/05/2019",
         "numOunces": 65
+      },
+      {
+        "date": "11/05/2019",
+        "numOunces": 84
+      },
+      {
+        "date": "12/05/2019",
+        "numOunces": 33
       }
     ]
   },
@@ -47,6 +55,14 @@ const hydrationDataSample = [
         "date": "10/05/2019",
         "numOunces": 80
       },
+      {
+        "date": "11/05/2019",
+        "numOunces": 22
+      },
+      {
+        "date": "12/05/2019",
+        "numOunces": 97
+      }
     ]
   }
 ]
