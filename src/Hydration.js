@@ -15,9 +15,11 @@ class Hydration {
     return this.hydrationData[userID-1].hydrationData.filter(el => el.date === date).pop().numOunces;
   }
 
-  // returnWeeklyDailyOz() {d
-
-  // }
+  returnAWeekWaterIntake(userID, date) {
+    let dateIndex = this.hydrationData[userID-1].hydrationData.findIndex(day => day.date === date);
+    let dateBack = dateIndex - 6
+    return this.hydrationData[userID-1].hydrationData.slice(dateBack, (dateIndex+1)).map(day => day.numOunces) 
+  }
 
 }
 

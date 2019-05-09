@@ -25,7 +25,11 @@ describe('Hydration', function() {
   });
 
   it('should keep track of the average water intake of a user', function() {
-    expect(hydration.returnAverageWaterIntake(2)).to.equal(71);  
+    expect(hydration.returnAverageWaterIntake(2)).to.equal(67.71428571428571);  
+  });
+
+  it('should keep track of a 7 days interval of water intake of a user', function() {
+    expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
   });
 
 });
