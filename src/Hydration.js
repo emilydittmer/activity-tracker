@@ -3,13 +3,17 @@ class Hydration {
     this.hydrationData = hydrationData;
   }
 
-  returnDailyWaterIntake(userID, date) {
-    return this.hydrationData[userID-1].hydrationData.filter(el => el.date === date).pop().numOunces;
+  returnAverageWaterIntake(userID) {
+    let waterIntakeDaily = this.hydrationData[userID-1].hydrationData.map(oz => oz.numOunces);
+    let totalWaterIntake = waterIntakeDaily.reduce((total, oz) => {
+      return total += oz
+    }, 0);
+    return totalWaterIntake/waterIntakeDaily.length;
   }
 
-  // returnFluidOzPerDay(date) {
-
-  // }
+  returnWaterIntakeByDate(userID, date) {
+    return this.hydrationData[userID-1].hydrationData.filter(el => el.date === date).pop().numOunces;
+  }
 
   // returnWeeklyDailyOz() {d
 
