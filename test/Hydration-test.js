@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Hydration = require('../src/Hydration');
 const User = require('../src/User');
+const UserRepository = require('../src/UserRepository');
 const hydrationDataSample = require('../data/hydration-sample')
 
 
@@ -20,7 +21,7 @@ describe('Hydration', function() {
   }); 
 
   it('should keep track of the daily water intake of a user', function() {
-    expect(hydration.returnDailyWaterIntake("06/05/2019")).to.equal(64);  
+    expect(hydration.returnDailyWaterIntake(1, "06/05/2019")).to.equal(64);  
   });
 
 

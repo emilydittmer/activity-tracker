@@ -3,8 +3,8 @@ class Hydration {
     this.hydrationData = hydrationData;
   }
 
-  returnDailyWaterIntake(id, date) {
-
+  returnDailyWaterIntake(userID, date) {
+    return this.hydrationData[userID-1].hydrationData.filter(el => el.date === date).pop().numOunces;
   }
 
   // returnFluidOzPerDay(date) {
