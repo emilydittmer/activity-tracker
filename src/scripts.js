@@ -8,8 +8,8 @@ let activityMinutesActive = document.querySelector('.main-bottom-right--activity
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
 
 window.addEventListener('load', updateOnLoad)
-let user = new User(userData[13]);
 let userRepository= new UserRepository(userData);
+let user = new User(userData[14]);
 
 function updateOnLoad() {
   updateUserName();
