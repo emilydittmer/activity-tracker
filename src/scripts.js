@@ -7,16 +7,28 @@ let activityNumOfSteps = document.querySelector('.main-bottom-right--activity-ca
 let activityMinutesActive = document.querySelector('.main-bottom-right--activity-card--minutes-active-value');
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
 
-window.addEventListener('load', updateOnLoad)
 let userRepository= new UserRepository(userData);
-let user = new User(userData[14]);
+let user = new User(userData[selectUserID()]);
+window.addEventListener('load', updateOnLoad)
 
 function updateOnLoad() {
+  grabUserIDs();
+  selectUserID();
   updateUserName();
   updateStepCount();
   updateAverageStepCount();
   updateMostCommonState();
   updateCompareStepCount();
+}
+
+function grabUserIDs() {
+  return userData.map(user => user.id)
+}
+
+function selectUserID() {
+  let randomID = grabUserIDs();
+  let userID = randomID.sort(() => .5 - Math.random()).shift();
+  return userID -1;
 }
 
 function updateUserName() {
