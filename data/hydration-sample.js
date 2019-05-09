@@ -810,3 +810,5 @@ const hydrationDataSample = [
     ]
   }
 ]
+
+module.exports = hydrationDataSample;
