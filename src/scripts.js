@@ -1,6 +1,5 @@
 let dateCard = document.querySelector('.main-top-left--date-card')
 let dateCardInput = document.querySelector('.main-top-left--date-card--input');
-let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-key');
 let sleepHoursOfSleep = document.querySelector('.main-bottom-center--sleep-card--hours-of-sleep-value');
 let sleepSleepQuality = document.querySelector('.main-bottom-center--sleep-card--sleep-quality-value');
 let activityNumOfSteps = document.querySelector('.main-bottom-right--activity-card--number-of-steps-value');
@@ -10,9 +9,8 @@ let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activi
 window.addEventListener('load', updateOnLoad)
 let userRepository= new UserRepository(userData);
 let user = new User(userData[grabUserIDIndex()]);
-
-// let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
-// let hydration = new Hydration(hydrationData);
+let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
+let hydration = new Hydration(hydrationData);
 
 function updateOnLoad() {
   grabUserIDs();
@@ -66,4 +64,8 @@ function updateMostCommonState() {
 function updateCompareStepCount() {
   let stepCountComparison = document.querySelector('.main-top-center--goals-card--step-count-comparison-value');
   stepCountComparison.innerHTML = userRepository.compareStepCounts();
+}
+function updateUserHydrationIntake() {
+  let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-key');
+  hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate();
 }
