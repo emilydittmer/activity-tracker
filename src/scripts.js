@@ -7,13 +7,17 @@ let activityNumOfSteps = document.querySelector('.main-bottom-right--activity-ca
 let activityMinutesActive = document.querySelector('.main-bottom-right--activity-card--minutes-active-value');
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
 
-let userRepository= new UserRepository(userData);
-let user = new User(userData[selectUserID()]);
 window.addEventListener('load', updateOnLoad)
+let userRepository= new UserRepository(userData);
+let user = new User(userData[grabUserIDIndex()]);
+
+// let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
+// let hydration = new Hydration(hydrationData);
 
 function updateOnLoad() {
   grabUserIDs();
   selectUserID();
+  grabUserIDIndex();
   updateUserName();
   updateStepCount();
   updateAverageStepCount();
@@ -22,13 +26,21 @@ function updateOnLoad() {
 }
 
 function grabUserIDs() {
-  return userData.map(user => user.id)
+  return userData.map(user => user.id);
 }
 
 function selectUserID() {
   let randomID = grabUserIDs();
+  console.log('randomize',randomID)
   let userID = randomID.sort(() => .5 - Math.random()).shift();
-  return userID -1;
+  console.log('userID', userID)
+  return userID;
+}
+
+function grabUserIDIndex() {
+  let index = selectUserID();
+  console.log('index', index-1)
+  return index -1
 }
 
 function updateUserName() {
