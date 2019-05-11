@@ -4,12 +4,12 @@ class Activity {
   }
 
   // return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
-  userStepsToMilesInADay(userID, date) {
-    let activ = this.activityData[userID-1].activityData;
-    let numSteps = activ.filter(day => (JSON.stringify(day.date)) === JSON.stringify(date)).pop().numSteps;
-    // return numSteps;
-    console.log(userRepository)
-  }
+  // userStepsToMilesInADay(userID, date) {
+  //   let activ = this.activityData[userID-1].activityData;
+  //   let numSteps = activ.filter(day => (JSON.stringify(day.date)) === JSON.stringify(date)).pop().numSteps;
+  //   // return numSteps;
+  //   console.log(userRepository)
+  // }
   // For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
   
   // For a user, how many minutes active did they average for a given week (7 days)?

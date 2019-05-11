@@ -1,7 +1,9 @@
 class UserRepository {
   constructor(dataFilepath) {
     this.dataFilepath = dataFilepath;
+    // this.currentUser = new User(this.returnUserData(userID))
   }
+
 
   returnUserData(userID) {
     let user = this.dataFilepath.find((user) => {
