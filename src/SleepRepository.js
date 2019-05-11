@@ -3,6 +3,10 @@ class SleepRepository {
     this.dataFilepath = dataFilepath;
   }
 
+  // instantiateNewDataSet() {
+  //   let newDataSet = new SleepRepository(dataFilepath)
+  // }
+
   averageSleepQualityAllUsers() {
     let allSleepUsers = this.dataFilepath.reduce((allUsers, eachUser) => {
       return allUsers.concat(eachUser)
@@ -22,7 +26,7 @@ class SleepRepository {
     let allData = this.dataFilepath.filter(allUsers => {
       let spreadedAllData = Object.entries(allUsers);
       let allUserSleepData = spreadedAllData[1][1];
-      let sevenDays = allUserSleepData.splice((allUserSleepData.findIndex(day => day.date === date) - 6), 7).reduce((total, dailySleep) => total += dailySleep.sleepQuality, 0)/7;
+      let sevenDays = allUserSleepData.slice((allUserSleepData.findIndex(day => day.date === date) - 6), 7).reduce((total, dailySleep) => total += dailySleep.sleepQuality, 0)/7;
       if (sevenDays > 3) {
         return allUsers
       }
@@ -31,7 +35,22 @@ class SleepRepository {
   }
 
   returnLongestDailySleeper(date) {
-
+    let topSleepUsers = this.dataFilepath.map(element => {
+      let m = element.sleepData.filter(el => el.date === date).pop()
+      let r = [];
+      r.push(m.hoursSlept)
+      r.unshift(element.userID)
+      return r
+    })
+   let topSleepLengths = topSleepUsers.reduce((total, el) => {
+    total.push(el)
+    return total
+  }, [])
+   let sortedTopSleepLengths = topSleepLengths.sort((a,b)=> a[1]-b[1])
+   let index = sortedTopSleepLengths.length - 1
+   let bestSleep = sortedTopSleepLengths[index]
+   let bestSleepers = sortedTopSleepLengths.filter(el => el === bestSleep)
+   return bestSleepers.map(sleeper => sleeper[0])
   }
 }  
   // For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
