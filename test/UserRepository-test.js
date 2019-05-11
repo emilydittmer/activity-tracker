@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-// const User = require('../src/User');
 const UserRepository = require('../src/UserRepository');
 const userDataSample = require('../src/sample-users');
 
@@ -9,7 +8,7 @@ describe('UserRepository', function() {
 
   beforeEach(function() {
     userRepository = new UserRepository(userDataSample);
-  })
+  });
 
   it('should be a function', function() {
     expect(UserRepository).to.be.a('function');

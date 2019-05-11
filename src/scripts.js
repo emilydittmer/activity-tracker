@@ -1,11 +1,10 @@
-// let dateCard = document.querySelector('.main-top-left--date-card')
-// let dateCardInput = document.querySelector('.main-top-left--date-card--input');
+let dateCard = document.querySelector('.main-top-left--date-card')
+let dateCardInput = document.querySelector('.main-top-left--date-card--input');
 let sleepHoursOfSleep = document.querySelector('.main-bottom-center--sleep-card--hours-of-sleep-value');
 let sleepSleepQuality = document.querySelector('.main-bottom-center--sleep-card--sleep-quality-value');
 let activityNumOfSteps = document.querySelector('.main-bottom-right--activity-card--number-of-steps-value');
 let activityMinutesActive = document.querySelector('.main-bottom-right--activity-card--minutes-active-value');
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
-let date = document.getElementById("date");
 
 window.addEventListener('load', updateOnLoad)
 let userRepository= new UserRepository(userData);
@@ -22,8 +21,6 @@ function updateOnLoad() {
   updateAverageStepCount();
   updateMostCommonState();
   updateCompareStepCount();
-  updateUserHydrationIntake();
-  updateLastWeekHydrationIntake()
 }
 
 function grabUserIDs() {
@@ -32,15 +29,15 @@ function grabUserIDs() {
 
 function selectUserID() {
   let randomID = grabUserIDs();
-  // console.log('randomize',randomID)
+  console.log('randomize',randomID)
   let userID = randomID.sort(() => .5 - Math.random()).shift();
-  // console.log('userID', userID)
+  console.log('userID', userID)
   return userID;
 }
 
 function grabUserIDIndex() {
   let index = selectUserID();
-  // console.log('index', index-1)
+  console.log('index', index-1)
   return index -1
 }
 
@@ -68,41 +65,7 @@ function updateCompareStepCount() {
   let stepCountComparison = document.querySelector('.main-top-center--goals-card--step-count-comparison-value');
   stepCountComparison.innerHTML = userRepository.compareStepCounts();
 }
-
-// let newDate =  new Date();
-// let year = newDate.getFullYear();
-// let month = newDate.getMonth() + 1;
-// let day = newDate.getDate();
-
-
-
-// if (month < 10) {
-// date.innerHTML = day + "/" + "0" + month + "/" + year;
-// } else {
-// date.innerHTML = day + "/" + month + "/" + year;  
-// }
-
-date.innerHTML = "13/08/2019"
-
-function getMonthtCurrentDateFromDataFiles() {
-  let hydObj = hydration.hydrationData.find(el => el.date = date.innerHTML);
-  return hydObj.date;
-}
-
 function updateUserHydrationIntake() {
-  let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-value');
-  if (date.innerHTML = getMonthtCurrentDateFromDataFiles()){
-  hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
-  }
+  let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-key');
+  hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate
 }
-
-function updateLastWeekHydrationIntake() {
-  document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];;
-  document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];;
-  document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
-  document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
-  document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];
-  document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];
-}
-
-
