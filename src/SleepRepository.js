@@ -17,11 +17,25 @@ class SleepRepository {
     }, 0); 
     return allSleepQuality/allData.length;
   }
-  // For all users, the average sleep quality
-  // Find all users who average a sleep quality greater than 3 for a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+  returnWeekSleepQualityAllUsers(date) {
+    let allData = this.dataFilepath.filter(allUsers => {
+      let spreadedAllData = Object.entries(allUsers);
+      let allUserSleepData = spreadedAllData[1][1];
+      let sevenDays = allUserSleepData.splice((allUserSleepData.findIndex(day => day.date === date) - 6), 7).reduce((total, dailySleep) => total += dailySleep.sleepQuality, 0)/7;
+      if (sevenDays > 3) {
+        return allUsers
+      }
+    })
+    return allData.map(user => user.userID);
+  }
+
+  returnLongestDailySleeper(date) {
+
+  }
+}  
   // For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
   // Make a metric of your own! Document it, calculate it, and display it.
-}
 
 if (typeof module !== 'undefined') {
   module.exports = SleepRepository;
