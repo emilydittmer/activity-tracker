@@ -12,11 +12,13 @@ class Hydration {
   }
 
   returnWaterIntakeByDate(userID, date) {
-    return this.hydrationData[userID-1].hydrationData.filter(el => el.date === date).pop().numOunces;
+    let dailyOz = this.hydrationData[userID-1].hydrationData
+    let x = dailyOz.filter(el => (JSON.stringify(el.date)) === JSON.stringify(date))
+    return x.pop().numOunces
   }
 
   returnAWeekWaterIntake(userID, date) {
-    let dateIndex = this.hydrationData[userID-1].hydrationData.findIndex(day => day.date === date);
+    let dateIndex = this.hydrationData[userID-1].hydrationData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
     let dateBack = dateIndex - 6
     return this.hydrationData[userID-1].hydrationData.slice(dateBack, (dateIndex+1)).map(day => day.numOunces) 
   }

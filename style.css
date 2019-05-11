@@ -1,11 +1,6 @@
-* {
-/*  border: 1px solid pink;*/
-  font-family: 'Open Sans';
-  font-weight: 400;
-  margin: 0px;
-}
-
 body {
+  font-family: 'Open Sans';
+  margin: 0px;
   display: grid;
   height: 100vh;
   grid-template-columns: 33% 33% 34%;
@@ -16,8 +11,8 @@ body {
 }
 
 header {
-  background-color: darkgray;
-  border: 2px solid gray;
+  background-color: #c33c00;
+  background-image: url("images/texture.svg");
   color: white;
   grid-area: header;
   padding: 10px;
@@ -27,14 +22,20 @@ h1 {
   text-align: center;
 }
 
-/*aside {
-  background-color: #c7dbfc;
-  grid-area: aside;
-}*/
+h2 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
 
 main {
-  background-color: lightgray;
-  border-left: 3px solid darkgray;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url("images/gym-floor.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
   grid-area: main;
   column-width: 25vw;
   padding: 30px;
@@ -54,19 +55,21 @@ input {
   width: 98%;
 }
 
-/*button {
-  height: 30px;
-  margin-top: 10px;
-}*/
-/*.main-top-left-date-card {
-  background-color: none;
-}*/
-
 article {
-  border: 2px solid white;
-  background-color: #c7dbfc;
+  text-align: center;
+  background-color: #c33c00;
+  border-radius: 2%;
   break-inside: avoid;
-  height: 38vh;
+  color: white;
+  filter: alpha(opacity=90);
+  height: 30vh;
   margin-bottom: 20px;
+  overflow: scroll;
   padding: 10px;
+  opacity: 0.7;
+}
+
+.main-bottom--hydration-card--number-of-ounces-past-key {
+  margin-bottom: 5px;
+  margin-top: 5px;
 }

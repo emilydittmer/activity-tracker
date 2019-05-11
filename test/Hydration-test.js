@@ -21,7 +21,7 @@ describe('Hydration', function() {
   }); 
 
   it('should keep track of the water intake of a user for a specific date', function() {
-    expect(hydration.returnWaterIntakeByDate(1, "06/05/2019")).to.equal(64);  
+    expect(hydration.returnWaterIntakeByDate(1, `06/05/2019`)).to.equal(64);  
   });
 
   it('should keep track of the average water intake of a user', function() {
