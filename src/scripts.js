@@ -21,6 +21,7 @@ function updateOnLoad() {
   updateAverageStepCount();
   updateMostCommonState();
   updateCompareStepCount();
+  updateLastWeekHydrationIntake();
 }
 
 function grabUserIDs() {
@@ -68,4 +69,38 @@ function updateCompareStepCount() {
 function updateUserHydrationIntake() {
   let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-key');
   hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate
+}
+
+// let newDate =  new Date();
+// let year = newDate.getFullYear();
+// let month = newDate.getMonth() + 1;
+// let day = newDate.getDate();
+
+
+
+// if (month < 10) {
+// date.innerHTML = day + "/" + "0" + month + "/" + year;
+// } else {
+// date.innerHTML = day + "/" + month + "/" + year;  
+// }
+
+date.innerHTML = "13/08/2019"
+
+function getMonthtCurrentDateFromDataFiles() {
+  let hydObj = hydration.hydrationData.find(el => el.date = date.innerHTML);
+  return hydObj.date;
+}
+
+let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-value');
+if (date.innerHTML = getMonthtCurrentDateFromDataFiles()){
+hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
+}
+
+function updateLastWeekHydrationIntake() {
+document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];;
+document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];;
+document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
+document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
+document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];
+document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];
 }
