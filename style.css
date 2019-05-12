@@ -73,3 +73,15 @@ article {
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+.main-bottom-center--sleep-card--hours-of-sleep-section {
+  color: white;
+}
+
+.main-bottom-center--sleep-card {
+  display: inline-flex;
+}
+
+.box {
+  font-size: 9px;
+}

@@ -1,7 +1,7 @@
 let dateCard = document.querySelector('.main-top-left--date-card')
 let dateCardInput = document.querySelector('.main-top-left--date-card--input');
-let sleepHoursOfSleep = document.querySelector('.main-bottom-center--sleep-card--hours-of-sleep-value');
-let sleepSleepQuality = document.querySelector('.main-bottom-center--sleep-card--sleep-quality-value');
+// let sleepHoursOfSleep = document.querySelector('.main-bottom-center--sleep-card--hours-of-sleep-value');
+// let sleepSleepQuality = document.querySelector('.main-bottom-center--sleep-card--sleep-quality-value');
 let activityNumOfSteps = document.querySelector('.main-bottom-right--activity-card--number-of-steps-value');
 let activityMinutesActive = document.querySelector('.main-bottom-right--activity-card--minutes-active-value');
 let activityFlightsOfStairs = document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-value');
@@ -11,9 +11,10 @@ let userRepository= new UserRepository(userData);
 let user = new User(userData[grabUserIDIndex()]);
 let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
 let hydration = new Hydration(hydrationData);
+let sleep = new Sleep(sleepData);
 
 function updateOnLoad() {
-  grabUserIDs();
+  // grabUserIDs();
   selectUserID();
   grabUserIDIndex();
   updateUserName();
@@ -22,6 +23,9 @@ function updateOnLoad() {
   updateMostCommonState();
   updateCompareStepCount();
   updateLastWeekHydrationIntake();
+  updateLastWeekSleepCount();
+  updateLastWeekSleepQuality();
+  updateSleepAverages();
 }
 
 function grabUserIDs() {
@@ -29,16 +33,17 @@ function grabUserIDs() {
 }
 
 function selectUserID() {
-  let randomID = grabUserIDs();
-  console.log('randomize',randomID)
-  let userID = randomID.sort(() => .5 - Math.random()).shift();
-  console.log('userID', userID)
+  // let randomID = grabUserIDs();
+  // console.log('randomize',randomID)
+  // let userID = randomID.sort(() => .5 - Math.random()).shift();
+  // console.log('userID', userID)
+  let userID = 1;
   return userID;
 }
 
 function grabUserIDIndex() {
   let index = selectUserID();
-  console.log('index', index-1)
+  // console.log('index', index-1)
   return index -1
 }
 
@@ -91,16 +96,46 @@ function getMonthtCurrentDateFromDataFiles() {
   return hydObj.date;
 }
 
-let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-value');
+let hydrationNumberOfOzToday = document.querySelector('.main-bottom--hydration-card--number-of-ounces-value');
+let hoursOfSleepToday = document.querySelector('.sleep-today');
+let sleepQualityToday = document.querySelector('.sleepq-today')
 if (date.innerHTML = getMonthtCurrentDateFromDataFiles()){
-hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
+hydrationNumberOfOzToday.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
+hoursOfSleepToday.innerHTML = sleep.returnTotalSleepHoursInSpecificDay(selectUserID(), date.innerHTML);
+sleepQualityToday.innerHTML = sleep.returnTotalSleepQualityInSpecificDay(selectUserID(), date.innerHTML);
 }
 
 function updateLastWeekHydrationIntake() {
-document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];;
-document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];;
-document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
-document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
-document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];
-document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];
+document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];;
+document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];;
+document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
+document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
+document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];
+document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];
 }
+
+function updateLastWeekSleepCount() {
+document.querySelector('.sleep-yesterday').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[5];;
+document.querySelector('.sleep-two-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[4];
+document.querySelector('.sleep-three-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[3];
+document.querySelector('.sleep-four-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[2];
+document.querySelector('.sleep-five-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[1];
+document.querySelector('.sleep-six-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[0];
+}
+
+
+function updateLastWeekSleepQuality() {
+document.querySelector('.sleepq-yesterday').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[5];;
+document.querySelector('.sleepq-two-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[4];
+document.querySelector('.sleepq-three-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[3];
+document.querySelector('.sleepq-four-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[2];
+document.querySelector('.sleepq-five-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[1];
+document.querySelector('.sleepq-six-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[0];
+}
+
+function updateSleepAverages() {
+document.querySelector('.sleep-count-average').innerHTML=sleep.returnAverageSleep(selectUserID());
+document.querySelector('.sleep-quality-average').innerHTML=sleep.returnAverageSleepQuality(selectUserID());
+}
+
+
