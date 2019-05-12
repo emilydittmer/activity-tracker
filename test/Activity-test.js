@@ -21,6 +21,10 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   }); 
 
+  it('should return the number of steps for a specific user in a day', function() {
+    expect(activity.returnUserStepsInADay(1, '06/05/2019')).to.equal(7368);  
+  });
+
   it('should return the miles a user has walked based on their number of steps for a specific date', function() {
     expect(activity.userStepsToMilesInADay(1, '06/05/2019', 4.7)).to.equal(6);  
   });
@@ -48,5 +52,21 @@ describe('Activity', function() {
   it('should return the all-time stair climbing record for a user', function() {
     expect(activity.returnAllTimeClimbingRecord(1)).to.equal(46);  
   });
+
+  it('should return a week of number of steps for a specific user', function(){
+    expect(activity.returnAWeekStepCount(1, "12/05/2019")).to.eql([7368, 3079, 2387, 6326, 13644, 4337, 9068]);
+  });
+
+  it('should return a week of flights of stairs for a specific user', function(){
+    expect(activity.returnAWeekFlightOfStairs(1, "12/05/2019")).to.eql([46, 4, 4, 26, 13, 15, 3]);
+  });
+
+  it('should return a week of active minutes for a specific user', function(){
+    expect(activity.returnAWeekMinutesActive(1, "12/05/2019")).to.eql([204, 115, 179, 126, 220, 294, 97]);
+  });
+
+  it('should return a week of miles walked for a specific user', function(){
+    expect(activity.returnAWeekMilesWalked(1, "12/05/2019")).to.eql([6, 2, 2, 5, 12, 3, 8]);
+  })
 
 });

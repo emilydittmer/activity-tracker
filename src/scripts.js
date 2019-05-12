@@ -27,6 +27,7 @@ function updateOnLoad() {
   updateLastWeekSleepQuality();
   updateSleepAverages();
   updateActivityToday();
+  updateActivityWeek()
 }
 
 function grabUserIDs() {
@@ -101,53 +102,58 @@ let hydrationNumberOfOzToday = document.querySelector('.main-bottom--hydration-c
 let hoursOfSleepToday = document.querySelector('.sleep-today');
 let sleepQualityToday = document.querySelector('.sleepq-today')
 if (date.innerHTML = getMonthtCurrentDateFromDataFiles()){
-hydrationNumberOfOzToday.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
-hoursOfSleepToday.innerHTML = sleep.returnTotalSleepHoursInSpecificDay(selectUserID(), date.innerHTML);
-sleepQualityToday.innerHTML = sleep.returnTotalSleepQualityInSpecificDay(selectUserID(), date.innerHTML);
+  hydrationNumberOfOzToday.innerHTML = hydration.returnWaterIntakeByDate(selectUserID(), date.innerHTML);
+  hoursOfSleepToday.innerHTML = sleep.returnTotalSleepHoursInSpecificDay(selectUserID(), date.innerHTML);
+  sleepQualityToday.innerHTML = sleep.returnTotalSleepQualityInSpecificDay(selectUserID(), date.innerHTML);
 }
 
 function updateLastWeekHydrationIntake() {
-document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];;
-document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];;
-document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
-document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
-document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];
-document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];
+  document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];;
+  document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];;
+  document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
+  document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
+  document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];
+  document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];
 }
 
 function updateLastWeekSleepCount() {
-document.querySelector('.sleep-yesterday').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[5];;
-document.querySelector('.sleep-two-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[4];
-document.querySelector('.sleep-three-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[3];
-document.querySelector('.sleep-four-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[2];
-document.querySelector('.sleep-five-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[1];
-document.querySelector('.sleep-six-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[0];
+  document.querySelector('.sleep-yesterday').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[5];;
+  document.querySelector('.sleep-two-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[4];
+  document.querySelector('.sleep-three-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[3];
+  document.querySelector('.sleep-four-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[2];
+  document.querySelector('.sleep-five-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[1];
+  document.querySelector('.sleep-six-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[0];
 }
 
 
 function updateLastWeekSleepQuality() {
-document.querySelector('.sleepq-yesterday').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[5];;
-document.querySelector('.sleepq-two-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[4];
-document.querySelector('.sleepq-three-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[3];
-document.querySelector('.sleepq-four-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[2];
-document.querySelector('.sleepq-five-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[1];
-document.querySelector('.sleepq-six-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[0];
+  document.querySelector('.sleepq-yesterday').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[5];;
+  document.querySelector('.sleepq-two-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[4];
+  document.querySelector('.sleepq-three-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[3];
+  document.querySelector('.sleepq-four-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[2];
+  document.querySelector('.sleepq-five-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[1];
+  document.querySelector('.sleepq-six-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[0];
 }
 
 function updateSleepAverages() {
-document.querySelector('.sleep-count-average').innerHTML=sleep.returnAverageSleep(selectUserID());
-document.querySelector('.sleep-quality-average').innerHTML=sleep.returnAverageSleepQuality(selectUserID());
+  document.querySelector('.sleep-count-average').innerHTML=sleep.returnAverageSleep(selectUserID());
+  document.querySelector('.sleep-quality-average').innerHTML=sleep.returnAverageSleepQuality(selectUserID());
 }
 
 function updateActivityToday() {
-document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = activity.
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = 100;
+  document.querySelector('.main-bottom-right--activity-card--number-of-steps-today-value').innerHTML = 4444;
+  document.querySelector('.main-bottom-right--activity-card--minutes-active-today-value').innerHTML = 9999;
+  document.querySelector('.main-bottom-right--activity-card--miles-walked-today-value').innerHTML = 5656;
 }
 
-// function updateActivityWeek() {
+function updateActivityWeek() {
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-week-value').innerHTML = "33, 55, 77, 88, 99, 100";
+  document.querySelector('.main-bottom-right--activity-card--number-of-steps-week-value').innerHTML = "99, 88, 22, 300, 55, 99";
+  document.querySelector('.main-bottom-right--activity-card--minutes-active-week-value').innerHTML = 88;
+}
 
-// }
+// // function updateRank() {
 
-// function updateRank() {
-
-// }
+// // }
 
