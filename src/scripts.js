@@ -144,7 +144,7 @@ function updateSleepAverages() {
 }
 
 function updateActivityToday() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = 1;
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = activity.returnUserFlightsOfStairsInADay(selectUserID(), date.innerHTML);
   document.querySelector('.main-bottom-right--activity-card--number-of-steps-today-value').innerHTML = activity.returnUserStepsInADay(selectUserID(), date.innerHTML);
   document.querySelector('.main-bottom-right--activity-card--minutes-active-today-value').innerHTML = activity.returnUserMinutesActiveInGivenDay(selectUserID(), date.innerHTML);
   document.querySelector('.main-bottom-right--activity-card--miles-walked-today-value').innerHTML = activity.userStepsToMilesInADay(selectUserID(), date.innerHTML);
