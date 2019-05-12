@@ -3,10 +3,6 @@ class SleepRepository {
     this.dataFilepath = dataFilepath;
   }
 
-  // instantiateNewDataSet() {
-  //   let newDataSet = new SleepRepository(dataFilepath)
-  // }
-
   averageSleepQualityAllUsers() {
     let allSleepUsers = this.dataFilepath.reduce((allUsers, eachUser) => {
       return allUsers.concat(eachUser)
@@ -52,9 +48,28 @@ class SleepRepository {
    let bestSleepers = sortedTopSleepLengths.filter(el => el === bestSleep)
    return bestSleepers.map(sleeper => sleeper[0])
   }
+
+  returnShortestDailySleeper(date) {
+    let worstSleepUsers = this.dataFilepath.map(element => {
+      let m = element.sleepData.filter(el => el.date === date).pop()
+      let r = [];
+      r.push(m.hoursSlept)
+      r.unshift(element.userID)
+      return r
+    })
+   let leastSleepLengths = worstSleepUsers.reduce((total, el) => {
+    total.push(el)
+    return total
+  }, [])
+   let sortedLeastSleepLengths = leastSleepLengths.sort((a,b)=> b[1]-a[1])
+   let index = sortedLeastSleepLengths.length - 1
+   let worstSleep = sortedLeastSleepLengths[index]
+   let worstSleepers = sortedLeastSleepLengths.filter(el => el === worstSleep)
+   return worstSleepers.map(sleeper => sleeper[0])
+  }
 }  
-  // For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
-  // Make a metric of your own! Document it, calculate it, and display it.
+
+
 
 if (typeof module !== 'undefined') {
   module.exports = SleepRepository;
