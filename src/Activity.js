@@ -4,6 +4,11 @@ class Activity {
     this.userData = userData;
   }
 
+  returnUserStepsInADay(userID, date) {
+    let specificUser = this.activityData[userID-1].activityData;
+    return specificUser.find(el => el.date === date).numSteps;
+  }
+
   userStepsToMilesInADay(userID, date, strideLength) {
     let dailyStep = this.activityData[userID-1].activityData;
     let stepByDay = dailyStep.find(el => el.date === date).numSteps
@@ -48,6 +53,30 @@ class Activity {
   returnAllTimeClimbingRecord(userID) {
     let userClimbingRecord = this.activityData[userID-1].activityData.map(el => el.flightsOfStairs).sort((a, b) => a-b).pop();
     return userClimbingRecord;
+  }
+
+  returnAWeekStepCount(userID, date) {
+    let dateIndex = this.activityData[userID-1].activityData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+    let dateBack = dateIndex - 6
+    return this.activityData[userID-1].activityData.slice(dateBack, (dateIndex+1)).map(day => day.numSteps) 
+  }
+
+  returnAWeekFlightOfStairs(userID, date) {
+    let dateIndex = this.activityData[userID-1].activityData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+    let dateBack = dateIndex - 6
+    return this.activityData[userID-1].activityData.slice(dateBack, (dateIndex+1)).map(day => day.flightsOfStairs) 
+  }
+
+  returnAWeekMinutesActive(userID, date) {
+    let dateIndex = this.activityData[userID-1].activityData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+    let dateBack = dateIndex - 6
+    return this.activityData[userID-1].activityData.slice(dateBack, (dateIndex+1)).map(day => day.minutesActive) 
+  }
+
+  returnAWeekMilesWalked(userID, date) {
+    let userStrideLength = this.userData.find(el => el.id === userID).strideLength;
+    let weeklySteps = this.returnAWeekStepCount(userID, date);
+   return weeklySteps.map(steps => Math.floor(steps * userStrideLength / 5280))
   }
 }
 
