@@ -28,6 +28,10 @@ describe('SleepRepository', function() {
 
   it('should return the user who slept most in a given day', function() {
     expect(sleepRepository.returnLongestDailySleeper("12/05/2019")).to.eql([1]);
+  });
+
+  it('should return the user who slept the least in a given day', function() {
+    expect(sleepRepository.returnShortestDailySleeper("12/05/2019")).to.eql([2]);
   })
 
 });
