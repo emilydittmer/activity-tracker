@@ -7,7 +7,7 @@ class Sleep {
     let totalSleep = sleepHoursDaily.reduce((total, hour) => {
       return total += hour
     }, 0);
-    return totalSleep/sleepHoursDaily.length;
+    return Math.floor(totalSleep/sleepHoursDaily.length);
   }
 
 returnAverageSleepQuality(userID) {
@@ -15,7 +15,7 @@ returnAverageSleepQuality(userID) {
   let totalSleepQuality = sleepQualityDaily.reduce((total, quality) => {
     return total += quality
   }, 0);
-  return totalSleepQuality/sleepQualityDaily.length;
+  return Math.floor(totalSleepQuality/sleepQualityDaily.length);
 }
 
 returnTotalSleepHoursInSpecificDay(userID, date) {
