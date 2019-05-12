@@ -2,34 +2,46 @@ class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
   } 
-
-// For a user (identified by their userID), the average number of hours slept per day
   returnAverageSleep(userID) {
-
-    function userHours() {
-      let oneUserHours = user(1);
-      oneUserHours = oneUserHours.sleepData;
-      return oneUserHours.map((day) => {
-        return day.hoursSlept;
-      });
-      return oneUserHours;
-    }
-    
-    function averageHours() {
-      let allUserHours = userHours();
-      return allUserHours.reduce((acc, hour) => {
-        return acc += hour/allUserHours.length
-      }, 0);
-    }
-    
-    averageHours();
-
+    let sleepHoursDaily = this.sleepData[userID-1].sleepData.map(day => day.hoursSlept);
+    let totalSleep = sleepHoursDaily.reduce((total, hour) => {
+      return total += hour
+    }, 0);
+    return totalSleep/sleepHoursDaily.length;
   }
-// For a user, their average sleep quality per day over all time
-// For a user, how many hours they slept for a specific day (identified by a date)
-// For a user, their sleep quality for a specific day (identified by a date)
-// For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+returnAverageSleepQuality(userID) {
+  let sleepQualityDaily = this.sleepData[userID-1].sleepData.map(day => day.sleepQuality);
+  let totalSleepQuality = sleepQualityDaily.reduce((total, quality) => {
+    return total += quality
+  }, 0);
+  return totalSleepQuality/sleepQualityDaily.length;
+}
+
+returnTotalSleepHoursInSpecificDay(userID, date) {
+  let dailyHoursSlept = this.sleepData[userID-1].sleepData
+  let x = dailyHoursSlept.filter(el => (JSON.stringify(el.date)) === JSON.stringify(date))
+  return x.pop().hoursSlept;
+}
+
+returnTotalSleepQualityInSpecificDay(userID, date) {
+  let dailySleepQuality = this.sleepData[userID-1].sleepData
+  let x = dailySleepQuality.filter(el => (JSON.stringify(el.date)) === JSON.stringify(date))
+  return x.pop().sleepQuality;
+}
+
+returnAWeekSleepCount(userID, date) {
+  let dateIndex = this.sleepData[userID-1].sleepData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+  let dateBack = dateIndex - 6
+  return this.sleepData[userID-1].sleepData.slice(dateBack, (dateIndex+1)).map(day => day.hoursSlept) 
+}
 // For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+returnAWeekSleepQualityCount(userID, date) {
+  let dateIndex = this.sleepData[userID-1].sleepData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+  let dateBack = dateIndex - 6
+  return this.sleepData[userID-1].sleepData.slice(dateBack, (dateIndex+1)).map(day => day.sleepQuality) 
+}
 
 }
 if (typeof module !== 'undefined') {
