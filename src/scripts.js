@@ -12,6 +12,8 @@ let user = new User(userData[grabUserIDIndex()]);
 let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
 let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
+let activityRepository = new ActivityRepository(activityData,userData);
+let activity = new Activity(activityData, userData);
 
 function updateOnLoad() {
   // grabUserIDs();
@@ -27,7 +29,8 @@ function updateOnLoad() {
   updateLastWeekSleepQuality();
   updateSleepAverages();
   updateActivityToday();
-  updateActivityWeek()
+  updateActivityWeek();
+  updateRank();
 }
 
 function grabUserIDs() {
@@ -141,19 +144,41 @@ function updateSleepAverages() {
 }
 
 function updateActivityToday() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = 100;
-  document.querySelector('.main-bottom-right--activity-card--number-of-steps-today-value').innerHTML = 4444;
-  document.querySelector('.main-bottom-right--activity-card--minutes-active-today-value').innerHTML = 9999;
-  document.querySelector('.main-bottom-right--activity-card--miles-walked-today-value').innerHTML = 5656;
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = 1;
+  document.querySelector('.main-bottom-right--activity-card--number-of-steps-today-value').innerHTML = activity.returnUserStepsInADay(selectUserID(), date.innerHTML);
+  document.querySelector('.main-bottom-right--activity-card--minutes-active-today-value').innerHTML = activity.returnUserMinutesActiveInGivenDay(selectUserID(), date.innerHTML);
+  document.querySelector('.main-bottom-right--activity-card--miles-walked-today-value').innerHTML = activity.userStepsToMilesInADay(selectUserID(), date.innerHTML);
 }
 
 function updateActivityWeek() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-week-value').innerHTML = "33, 55, 77, 88, 99, 100";
-  document.querySelector('.main-bottom-right--activity-card--number-of-steps-week-value').innerHTML = "99, 88, 22, 300, 55, 99";
-  document.querySelector('.main-bottom-right--activity-card--minutes-active-week-value').innerHTML = 88;
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-week-value').innerHTML = activity.returnAWeekFlightOfStairs(selectUserID(), date.innerHTML);
+  document.querySelector('.main-bottom-right--activity-card--number-of-steps-week-value').innerHTML = activity.returnAWeekStepCount(selectUserID(), date.innerHTML);
+  document.querySelector('.main-bottom-right--activity-card--minutes-active-week-value').innerHTML = activity.returnAWeekMinutesActive(selectUserID(), date.innerHTML);
+  document.querySelector('.main-bottom-right--activity-card--miles-walked-week-value').innerHTML = activity.returnAWeekMilesWalked(selectUserID(), date.innerHTML);
 }
 
-// // function updateRank() {
+function returnComparisonOfUserStepsToOverAllAvg() {
+  let overallStepAverage = activityRepository.returnAverageStepsInADayForAllUsers(date.innerHTML);
+  let userDailySteps = activity.returnUserStepsInADay(selectUserID(), date.innerHTML);
+  return Math.floor((userDailySteps/overallStepAverage)*100)
+}
 
-// // }
+function returnComparisonOfUserFlightsOfStairsToOverAllAvg() {
+  let overallStairsAverage = activityRepository.returnAverageStairsClimbedInADayForAllUsers(date.innerHTML);
+  let userFlightOfStairs = activity.returnUserFlightsOfStairsInADay(selectUserID(), date.innerHTML);
+  return Math.floor((userFlightOfStairs/overallStairsAverage)*100);
+}
+
+function returnComparisonOfUserMinActiveToOverAllAvg() {
+  let overallMinAverage = activityRepository.returnAverageMinsActiveInADayForAllUsers(date.innerHTML);
+  let userMinActive = activity.returnUserMinutesActiveInGivenDay(selectUserID(), date.innerHTML);
+  return Math.floor((userMinActive/overallMinAverage)*100);
+}
+
+function updateRank() {
+  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-rank-value').innerHTML = returnComparisonOfUserFlightsOfStairsToOverAllAvg();
+  document.querySelector('.main-bottom-right--activity-card--number-of-steps-rank-value').innerHTML = returnComparisonOfUserStepsToOverAllAvg();
+  document.querySelector('.main-bottom-right--activity-card--minutes-active-rank-value').innerHTML = returnComparisonOfUserMinActiveToOverAllAvg();
+  document.querySelector('.main-bottom-right--activity-card--miles-walked-rank-value').innerHTML = returnComparisonOfUserStepsToOverAllAvg();
+}
 

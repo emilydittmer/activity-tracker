@@ -67,6 +67,14 @@ describe('Activity', function() {
 
   it('should return a week of miles walked for a specific user', function(){
     expect(activity.returnAWeekMilesWalked(1, "12/05/2019")).to.eql([6, 2, 2, 5, 12, 3, 8]);
-  })
+  });
+
+  it('should return the number of steps for a specific user in a day', function() {
+    expect(activity.returnUserStepsInADay(1, '06/05/2019')).to.equal(7368);  
+  });
+
+  it('should return the flights of stairs for a specific user in a day', function() {
+    expect(activity.returnUserFlightsOfStairsInADay(1, '06/05/2019')).to.equal(46);  
+  });
 
 });
