@@ -1,14 +1,16 @@
 const chai = require('chai');
 const expect = chai.expect;
 const ActivityRepository = require('../src/ActivityRepository');
-// const User = require('../src/User');
-// const UserRepository = require('../src/UserRepository');
+const User = require('../src/User');
+const UserRepository = require('../src/UserRepository');
 const activityDataSample = require('../data/activity-sample');
+const userDataSample = require('../src/sample-users');
+
 
 describe('ActivityRepository', function() {
   let activityRepository;
   beforeEach(function() {  
-    activityRepository = new ActivityRepository(activityDataSample);
+    activityRepository = new ActivityRepository(activityDataSample,userDataSample);
   })
 
   it('should be a function', function() {

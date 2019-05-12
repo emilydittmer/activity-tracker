@@ -1,36 +1,55 @@
 class Activity {
-  constructor (activityData) {
+  constructor (activityData, userData) {
     this.activityData = activityData;
+    this.userData = userData;
   }
 
-  // return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
-  // userStepsToMilesInADay(userID, date) {
-  //   let activ = this.activityData[userID-1].activityData;
-  //   let numSteps = activ.filter(day => (JSON.stringify(day.date)) === JSON.stringify(date)).pop().numSteps;
-  //   // return numSteps;
-  //   console.log(userRepository)
-  // }
-  // For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
-  
-  // For a user, how many minutes active did they average for a given week (7 days)?
-  
-  // For a user, did they reach their step goal for a given day (specified by a date)?
-  
-  // For a user, find all the days where they exceeded their step goal
-  
-  // For a user, find their all-time stair climbing record
-  
-  // For all users, what is the average number of:
-  // - stairs climbed for a specified date
+  userStepsToMilesInADay(userID, date, strideLength) {
+    let dailyStep = this.activityData[userID-1].activityData;
+    let stepByDay = dailyStep.find(el => el.date === date).numSteps
+    let userStrideLength = this.userData.find(el => el.id === userID).strideLength
+    let totalStepDistanceInMiles = userStrideLength * stepByDay / 5280;
+    return Math.floor(totalStepDistanceInMiles);
+  }
 
-  // - steps taken for a specific date
+  userStepsToKilometersInADay(userID, date, strideLength) {
+    return Math.floor(this.userStepsToMilesInADay(userID, date, strideLength) * 1.609344);
+  }
 
-  // - minutes active for a specific date
+  returnUserMinutesActiveInGivenDay(userID, date) {
+    let dailyMinutes = this.activityData[userID-1].activityData;
+    let userMinutesActiveInADay = dailyMinutes.find(el => el.date === date).minutesActive;
+    return userMinutesActiveInADay;
+  }
 
-  // - Make a metric of your own! Document it, calculate it, and display it.
+  returnAWeekMinutesActiveAverage(userID, date) {
+    let dateIndex = this.activityData[userID-1].activityData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
+    let dateBack = dateIndex - 6;
+    let weekActivityMinutes = this.activityData[userID-1].activityData.slice(dateBack, (dateIndex+1)).map(day => day.minutesActive);
+    let averageMinutes = weekActivityMinutes.reduce((total, daily) => {
+      return total += daily;
+    }, 0)/7
+    return Math.floor(averageMinutes);
+  }
+  
+  returnCheckGoalReachedInGivenDay(userID, date) {
+    let dailySteps = this.activityData[userID-1].activityData;
+    let userStepsInADay = dailySteps.find(el => el.date === date).numSteps;
+    let userStepGoalInADay = this.userData.find(user => user.id === userID).dailyStepGoal;
+    return userStepGoalInADay >= userStepGoalInADay ? true : false;
+  }
 
+  returnDaysExceededStepGoal(userID) {
+  let stepGoal = this.userData.find(user => user.id === userID).dailyStepGoal
+  let correctUser = this.activityData.find(user => user.userID === userID).activityData
+  return correctUser.filter(day => day.numSteps > stepGoal).map(day => day.date);
 }
-
+  
+  returnAllTimeClimbingRecord(userID) {
+    let userClimbingRecord = this.activityData[userID-1].activityData.map(el => el.flightsOfStairs).sort((a, b) => a-b).pop();
+    return userClimbingRecord;
+  }
+}
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;

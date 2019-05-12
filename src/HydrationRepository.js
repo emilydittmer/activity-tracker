@@ -1,7 +1,6 @@
 class HydrationRepository {
-  constructor(dataFilepath, UserRepository) {
+  constructor(dataFilepath) {
     this.dataFilepath = dataFilepath;
-    this.UserRepository = UserRepository;
   }
 }
 
