@@ -26,6 +26,7 @@ function updateOnLoad() {
   updateLastWeekSleepCount();
   updateLastWeekSleepQuality();
   updateSleepAverages();
+  updateActivityToday();
 }
 
 function grabUserIDs() {
@@ -138,4 +139,15 @@ document.querySelector('.sleep-count-average').innerHTML=sleep.returnAverageSlee
 document.querySelector('.sleep-quality-average').innerHTML=sleep.returnAverageSleepQuality(selectUserID());
 }
 
+function updateActivityToday() {
+document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = activity.
+}
+
+// function updateActivityWeek() {
+
+// }
+
+// function updateRank() {
+
+// }
 
