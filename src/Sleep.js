@@ -35,7 +35,6 @@ returnAWeekSleepCount(userID, date) {
   let dateBack = dateIndex - 6
   return this.sleepData[userID-1].sleepData.slice(dateBack, (dateIndex+1)).map(day => day.hoursSlept) 
 }
-// For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
 
 returnAWeekSleepQualityCount(userID, date) {
   let dateIndex = this.sleepData[userID-1].sleepData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
