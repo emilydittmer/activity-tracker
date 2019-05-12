@@ -1,6 +1,7 @@
 class ActivityRepository {
-  constructor (dataFilepath) {
+  constructor (dataFilepath, userData) {
     this.dataFilepath = dataFilepath;
+    this.userData = userData;
   }
   
   // For all users, what is the average number of:

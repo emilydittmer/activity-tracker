@@ -6,21 +6,11 @@ const UserRepository = require('../src/UserRepository');
 const userDataSample = require('../src/sample-users');
 const activityDataSample = require('../data/activity-sample');
 
-// const sampleUser =   {
-//     "id": 1,
-//     "name": "Nyasia Weber",
-//     "address": "270 August Meadows, Maribelside SD 36129",
-//     "email": "Jordane_Schultz@yahoo.com",
-//     "strideLength": 4.7,
-//     "dailyStepGoal": 8000
-//   };
-
 describe('Activity', function() {
-  // let UserRepository;
   let activity;
+
   beforeEach(function() {  
-    // UserRepository = new UserRepository(userDataSample);
-    activity = new Activity(activityDataSample);
+    activity = new Activity(activityDataSample, userDataSample);
   })
 
   it('should be a function', function() {
@@ -31,37 +21,32 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   }); 
 
-  // it('return the miles a user has walked based on their number of steps for a specific date', function() {
-  //   expect(activity.userStepsToMilesInADay(1, `06/05/2019`)).to.equal(6.5586363636);  
-  // });
+  it('should return the miles a user has walked based on their number of steps for a specific date', function() {
+    expect(activity.userStepsToMilesInADay(1, '06/05/2019', 4.7)).to.equal(6);  
+  });
 
-  // (stride 4.7 * numSteps 7368) / oneMileLength 5280
+  it('should return the kilometers a user has walked based on their number of steps for a specific date', function() {
+    expect(activity.userStepsToKilometersInADay(1, '06/05/2019', 4.7)).to.equal(9);  
+  });
 
-  // it('should keep track of how many minutes a user was active for a given day', function() {
-  //   expect(hydration.returnAverageWaterIntake(2)).to.equal(67.71428571428571);  
-  // });
+  it('should keep track of how many minutes a user was active for a given day', function() {
+    expect(activity.returnUserMinutesActiveInGivenDay(1, '12/05/2019')).to.equal(97);  
+  });
 
-  // it('should keep track of how many minutes active did a user average for a given week, function() {
-  //   expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
-  // });
+  it('should keep track of how many minutes active a user averaged for a given week', function() {
+    expect(activity.returnAWeekMinutesActiveAverage(1, "12/05/2019")).to.equal(176);  
+  });
 
-  // it('should return wether a user did they reach their step goal for a given day, function() {
-  //   expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
-  // });
+  it('should return wether a user did they reach their step goal for a given day', function() {
+    expect(activity.returnCheckGoalReachedInGivenDay(1, "12/05/2019")).to.equal(true);  
+  });
 
-  // it('should find all the days where the user exceeded their step goal, function() {
-  //   expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
-  // });
+  it('should find all the days where the user exceeded their step goal', function() {
+    expect(activity.returnDaysExceededStepGoal(1)).to.eql(["10/05/2019", "12/05/2019"]);  
+  });
 
-  // it('should find the all-time stair climbing record for a user, function() {
-  //   expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
-  // });
-
-  // it('should find the all-time stair climbing record for a user, function() {
-  //   expect(hydration.returnAWeekWaterIntake(1, "12/05/2019")).to.eql([64, 80, 39, 40, 65, 84, 33]);  
-  // });
-
-
-  
+  it('should return the all-time stair climbing record for a user', function() {
+    expect(activity.returnAllTimeClimbingRecord(1)).to.equal(46);  
+  });
 
 });
