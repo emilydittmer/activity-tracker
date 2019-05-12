@@ -9,7 +9,7 @@ class Activity {
     return specificUser.find(el => el.date === date).numSteps;
   }
 
-  userStepsToMilesInADay(userID, date, strideLength) {
+  userStepsToMilesInADay(userID, date) {
     let dailyStep = this.activityData[userID-1].activityData;
     let stepByDay = dailyStep.find(el => el.date === date).numSteps
     let userStrideLength = this.userData.find(el => el.id === userID).strideLength
@@ -78,6 +78,17 @@ class Activity {
     let weeklySteps = this.returnAWeekStepCount(userID, date);
    return weeklySteps.map(steps => Math.floor(steps * userStrideLength / 5280))
   }
+
+  returnUserStepsInADay(userID, date) {
+    let specificUser = this.activityData[userID-1].activityData;
+    return specificUser.find(el => el.date === date).numSteps;
+  }
+
+  returnUserFlightsOfStairsInADay(userID, date) {
+    let specificUser = this.activityData[userID-1].activityData;
+    return specificUser.find(el => el.date === date).flightsOfStairs;
+  }
+
 }
 
 if (typeof module !== 'undefined') {

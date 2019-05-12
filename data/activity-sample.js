@@ -92,6 +92,6 @@ const activityDataSample = [
       }]
   }];
 
-  if (typeof module != undefined) {
+  if (typeof module != 'undefined') {
   module.exports = activityDataSample;
 }
