@@ -16,7 +16,7 @@ let activityRepository = new ActivityRepository(activityData,userData);
 let activity = new Activity(activityData, userData);
 
 function updateOnLoad() {
-  // grabUserIDs();
+  grabUserIDs();
   selectUserID();
   grabUserIDIndex();
   updateUserName();
@@ -58,27 +58,22 @@ function updateUserName() {
 }
 
 function updateStepCount() {
-  let goalsStepCount = document.querySelector('.main-top-center--step-count-value');
-  goalsStepCount.innerHTML = user.userData.dailyStepGoal;
+  $('.main-top-center--step-count-value').text(user.userData.dailyStepGoal);
 }
 
 function updateAverageStepCount() {
-  let averageStepCount = document.querySelector('.main-top-right--common-trends-card--step-count-trend-value');
-  averageStepCount.innerHTML = userRepository.returnAverageStepGoal();
+  $('.main-top-right--common-trends-card--step-count-trend-value').text(userRepository.returnAverageStepGoal());
 }
 
 function updateMostCommonState() {
-  let mostCommonState = document.querySelector('.main-top-right--common-trends-card--most-common-state-value');
-  mostCommonState.innerHTML = userRepository.returnMostFrequentState();
+  $('.main-top-right--common-trends-card--most-common-state-value').text(userRepository.returnMostFrequentState());
 }
 
 function updateCompareStepCount() {
-  let stepCountComparison = document.querySelector('.main-top-center--goals-card--step-count-comparison-value');
-  stepCountComparison.innerHTML = userRepository.compareStepCounts();
+  $('.main-top-center--goals-card--step-count-comparison-value').text(userRepository.compareStepCounts());
 }
 function updateUserHydrationIntake() {
-  let hydrationNumberOfOz = document.querySelector('.main-bottom--hydration-card--number-of-ounces-key');
-  hydrationNumberOfOz.innerHTML = hydration.returnWaterIntakeByDate
+  $('.main-bottom--hydration-card--number-of-ounces-key').text(hydration.returnWaterIntakeByDate);
 }
 
 // let newDate =  new Date();
@@ -111,50 +106,50 @@ if (date.innerHTML = getMonthtCurrentDateFromDataFiles()){
 }
 
 function updateLastWeekHydrationIntake() {
-  document.querySelector('.yesterday').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5];;
-  document.querySelector('.two-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4];;
-  document.querySelector('.three-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3];
-  document.querySelector('.four-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2];
-  document.querySelector('.five-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1];
-  document.querySelector('.six-days-ago').innerHTML = hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0];
+  $('.yesterday').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[5]);
+  $('.two-days-ago').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[4]);
+  $('.three-days-ago').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[3]);
+  $('.four-days-ago').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[2]);
+  $('.five-days-ago').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[1]);
+  $('.six-days-ago').text(hydration.returnAWeekWaterIntake(selectUserID(), date.innerHTML)[0]);
 }
 
 function updateLastWeekSleepCount() {
-  document.querySelector('.sleep-yesterday').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[5];;
-  document.querySelector('.sleep-two-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[4];
-  document.querySelector('.sleep-three-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[3];
-  document.querySelector('.sleep-four-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[2];
-  document.querySelector('.sleep-five-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[1];
-  document.querySelector('.sleep-six-days-ago').innerHTML = sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[0];
+  $('.sleep-yesterday').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[5]);
+  $('.sleep-two-days-ago').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[4]);
+  $('.sleep-three-days-ago').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[3]);
+  $('.sleep-four-days-ago').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[2]);
+  $('.sleep-five-days-ago').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[1]);
+  $('.sleep-six-days-ago').text(sleep.returnAWeekSleepCount(selectUserID(), date.innerHTML)[0]);
 }
 
 
 function updateLastWeekSleepQuality() {
-  document.querySelector('.sleepq-yesterday').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[5];;
-  document.querySelector('.sleepq-two-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[4];
-  document.querySelector('.sleepq-three-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[3];
-  document.querySelector('.sleepq-four-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[2];
-  document.querySelector('.sleepq-five-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[1];
-  document.querySelector('.sleepq-six-days-ago').innerHTML = sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[0];
+  $('.sleepq-yesterday').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[5]);
+  $('.sleepq-two-days-ago').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[4]);
+  $('.sleepq-three-days-ago').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[3]);
+  $('.sleepq-four-days-ago').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[2]);
+  $('.sleepq-five-days-ago').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[1]);
+  $('.sleepq-six-days-ago').text(sleep.returnAWeekSleepQualityCount(selectUserID(), date.innerHTML)[0]);
 }
 
 function updateSleepAverages() {
-  document.querySelector('.sleep-count-average').innerHTML=sleep.returnAverageSleep(selectUserID());
-  document.querySelector('.sleep-quality-average').innerHTML=sleep.returnAverageSleepQuality(selectUserID());
+  $('.sleep-count-average').text(sleep.returnAverageSleep(selectUserID()));
+  $('.sleep-quality-average').text(sleep.returnAverageSleepQuality(selectUserID()));
 }
 
 function updateActivityToday() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-today').innerHTML = activity.returnUserFlightsOfStairsInADay(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--number-of-steps-today-value').innerHTML = activity.returnUserStepsInADay(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--minutes-active-today-value').innerHTML = activity.returnUserMinutesActiveInGivenDay(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--miles-walked-today-value').innerHTML = activity.userStepsToMilesInADay(selectUserID(), date.innerHTML);
+  $('.main-bottom-right--activity-card--flights-of-stairs-today').text(activity.returnUserFlightsOfStairsInADay(selectUserID(), date.innerHTML));
+  $('.main-bottom-right--activity-card--number-of-steps-today-value').text(activity.returnUserStepsInADay(selectUserID(), date.innerHTML));
+  $('.main-bottom-right--activity-card--minutes-active-today-value').text(activity.returnUserMinutesActiveInGivenDay(selectUserID(), date.innerHTML))
+  $('.main-bottom-right--activity-card--miles-walked-today-value').text(activity.userStepsToMilesInADay(selectUserID(), date.innerHTML));
 }
 
 function updateActivityWeek() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-week-value').innerHTML = activity.returnAWeekFlightOfStairs(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--number-of-steps-week-value').innerHTML = activity.returnAWeekStepCount(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--minutes-active-week-value').innerHTML = activity.returnAWeekMinutesActive(selectUserID(), date.innerHTML);
-  document.querySelector('.main-bottom-right--activity-card--miles-walked-week-value').innerHTML = activity.returnAWeekMilesWalked(selectUserID(), date.innerHTML);
+  $('.main-bottom-right--activity-card--flights-of-stairs-week-value').text(activity.returnAWeekFlightOfStairs(selectUserID(), date.innerHTML));
+  $('.main-bottom-right--activity-card--number-of-steps-week-value').text(activity.returnAWeekStepCount(selectUserID(), date.innerHTML));
+  $('.main-bottom-right--activity-card--minutes-active-week-value').text(activity.returnAWeekMinutesActive(selectUserID(), date.innerHTML));
+  $('.main-bottom-right--activity-card--miles-walked-week-value').text(activity.returnAWeekMilesWalked(selectUserID(), date.innerHTML));
 }
 
 function returnComparisonOfUserStepsToOverAllAvg() {
@@ -176,9 +171,9 @@ function returnComparisonOfUserMinActiveToOverAllAvg() {
 }
 
 function updateRank() {
-  document.querySelector('.main-bottom-right--activity-card--flights-of-stairs-rank-value').innerHTML = returnComparisonOfUserFlightsOfStairsToOverAllAvg();
-  document.querySelector('.main-bottom-right--activity-card--number-of-steps-rank-value').innerHTML = returnComparisonOfUserStepsToOverAllAvg();
-  document.querySelector('.main-bottom-right--activity-card--minutes-active-rank-value').innerHTML = returnComparisonOfUserMinActiveToOverAllAvg();
-  document.querySelector('.main-bottom-right--activity-card--miles-walked-rank-value').innerHTML = returnComparisonOfUserStepsToOverAllAvg();
+  $('.main-bottom-right--activity-card--flights-of-stairs-rank-value').text(returnComparisonOfUserFlightsOfStairsToOverAllAvg());
+  $('.main-bottom-right--activity-card--number-of-steps-rank-value').text(returnComparisonOfUserStepsToOverAllAvg());
+  $('.main-bottom-right--activity-card--minutes-active-rank-value').text(returnComparisonOfUserMinActiveToOverAllAvg());
+  $('.main-bottom-right--activity-card--miles-walked-rank-value').text(returnComparisonOfUserStepsToOverAllAvg());
 }
 
