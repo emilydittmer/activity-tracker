@@ -11,16 +11,14 @@
   <body>
     <header>
       <h1>Welcome to Activity Tracker, <span class="header--user-name"></span>!</h1>
-      <!-- <input>Date -->
+      <p id="date"></p>
     </header>
-<!--       <aside>
-        Button
-      </aside> -->
     <main>
-        <article class="main-top-left--date-card">
-        <h2 class="main-top--date-card--title">Today is:</h2>
-        <h3 id="date"></h3>
-        <!-- <input class="main-top-left--date-card--input" type="Date" name="date"></input> -->
+      <article class="main-top-left--friends-card">
+        <h2 class="main-top-right--friends-card--title">Friends</h2>
+        <h3 class="main-top-right--friends-card--name1-key">Friend1 <span class="main-top-right--friends-card--name1-value">name</span>: <span class="main-top-right--friends-card--number-of-steps1-value"></span>steps</h3>
+        <h3 class="main-top-right--friends-card--name2-key">Friend2 <span class="main-top-right--friends-card--name2-value">name</span>: <span class="main-top-right--friends-card--number-of-steps2-value"></span>steps</h3>
+        <h3 class="main-top-right--friends-card--best">Best walker this week is <span class="main-top-right--friends-card--best-value">name </span>with # <span class="main-top-right--friends-card--best-value"></span>steps</h3>
       </article>
       <article class="main-bottom-left--hydration-card">
         <h2 class="main-bottom--hydration-card--title">Hydration level</h2>
@@ -89,7 +87,7 @@
           <tr>
             <td>Number of Steps</td>
             <td class="main-bottom-right--activity-card--number-of-steps-today"><span class="main-bottom-right--activity-card--number-of-steps-today-value">#</span></td>
-            <td class="main-bottom-right--activity-card--number-of-steps-week"><span class="main-bottom-right--activity-card--number-of-steps-week-value">#</span></td>
+            <td class="main-bottom-right--activity-card--number-of-steps-week"><span class="main-bottom-right--activity-card--number-of-steps-week-value">#</span><p class="total-steps-count-key">Total steps count: <span class="total-step-count-value">value</span></p></td>
             <td class="main-bottom-right--activity-card--number-of-steps-rank"><span class="main-bottom-right--activity-card--number-of-steps-rank-value">#</span>%</td>
           </tr>
           <tr>
