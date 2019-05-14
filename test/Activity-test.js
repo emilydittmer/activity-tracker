@@ -57,6 +57,11 @@ describe('Activity', function() {
     expect(activity.returnAWeekStepCount(1, "12/05/2019")).to.eql([7368, 3079, 2387, 6326, 13644, 4337, 9068]);
   });
 
+  it('should return the total number of steps for a specific user in a week', function(){
+    expect(activity.returnAWeekTotalSteps(1, "12/05/2019")).to.equal(46209);
+  });
+  
+
   it('should return a week of flights of stairs for a specific user', function(){
     expect(activity.returnAWeekFlightOfStairs(1, "12/05/2019")).to.eql([46, 4, 4, 26, 13, 15, 3]);
   });

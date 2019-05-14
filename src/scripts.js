@@ -25,6 +25,7 @@ function updateOnLoad() {
   updateRank();
   generateSecondUser();
   generateThirdUser();
+  compareThreeFriends()
 }
 
 function updateUserName() {
@@ -109,6 +110,7 @@ function updateActivityWeek() {
   $('.main-bottom-right--activity-card--number-of-steps-week-value').text(activity.returnAWeekStepCount(randomID, date.innerHTML));
   $('.main-bottom-right--activity-card--minutes-active-week-value').text(activity.returnAWeekMinutesActive(randomID, date.innerHTML));
   $('.main-bottom-right--activity-card--miles-walked-week-value').text(activity.returnAWeekMilesWalked(randomID, date.innerHTML));
+  $('.total-step-count-value').text(activity.returnAWeekTotalSteps(randomID, date.innerHTML));
 }
 
 function returnComparisonOfUserStepsToOverAllAvg() {
@@ -139,21 +141,30 @@ function updateRank() {
 function generateSecondUser() {
   let randomID2 = Math.floor(Math.random() * userData.length) + 1;
   let user2 = new User(userData[randomID2 -1]);
-  let userRepository2 = new UserRepository(userData);
-  let activityRepository2 = new ActivityRepository(activityData,userData);
   let activity2 = new Activity(activityData, userData);
-  $('.main-top-right--friends-card--name1-value').text(user2.returnFirstName());
-  $('.main-top-right--friends-card--number-of-steps1-value').text(activity2.returnAWeekStepCount(randomID2, date.innerHTML));
+  let name2 = $('.main-top-right--friends-card--name1-value').text(user2.returnFirstName());
+  let number2 = $('.main-top-right--friends-card--number-of-steps1-value').text(activity2.returnAWeekTotalSteps(randomID2, date.innerHTML));
 }
 
 function generateThirdUser() {
   let randomID3 = Math.floor(Math.random() * userData.length) + 1;
   let user3 = new User(userData[randomID3 -1]);
-  let userRepository3 = new UserRepository(userData);
-  let activityRepository3 = new ActivityRepository(activityData,userData);
   let activity3 = new Activity(activityData, userData);
   $('.main-top-right--friends-card--name2-value').text(user3.returnFirstName());
-  $('.main-top-right--friends-card--number-of-steps2-value').text(activity3.returnAWeekStepCount(randomID3, date.innerHTML));
+  $('.main-top-right--friends-card--number-of-steps2-value').text(activity3.returnAWeekTotalSteps(randomID3, date.innerHTML));
 }
 
+function compareThreeFriends() {
+  let mainUserTotalSteps = parseInt($('.total-step-count-value').text());
+  let friendUser2totalSteps = parseInt($('.main-top-right--friends-card--number-of-steps1-value').text());
+  let friendUser3totalSteps = parseInt($('.main-top-right--friends-card--number-of-steps2-value').text());
+  let mainUsername = $('.header--user-name').text();
+  let secondUserName = $('.main-top-right--friends-card--name1-value').text();
+  let thirdUserName = $('.main-top-right--friends-card--name2-value').text();
+  let friends = [{name: mainUsername, steps: mainUserTotalSteps}, {name: secondUserName, steps: friendUser2totalSteps},{name: thirdUserName, steps: friendUser3totalSteps}];
+  let orderedSteps = friends.sort((a, b) => a.steps - b.steps).pop();
+  console.log(orderedSteps)
+  $('.main-top-right--friends-card--best-name').text(orderedSteps.name);
+  $('.main-top-right--friends-card--best-value').text(orderedSteps.steps);
+}
 
