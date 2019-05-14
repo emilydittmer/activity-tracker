@@ -29,10 +29,13 @@ describe('UserRepository', function() {
     });
   });  
 
-  it('should store the address of the user', function() {
+  it('should return the average step goal for all users', function() {
     expect(userRepository.returnAverageStepGoal()).to.equal(8833.333333333332);
   });
-  
+
+  it('should return the average stride length for all users', function() {
+    expect(userRepository.returnAverageStrideLength()).to.equal(5);
+  });
 
   it('should return the addresses of all users', function() {
     expect(userRepository.returnAllUsersAddresses()).to.eql([
