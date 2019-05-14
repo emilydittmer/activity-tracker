@@ -61,6 +61,12 @@ class Activity {
     return this.activityData[userID-1].activityData.slice(dateBack, (dateIndex+1)).map(day => day.numSteps) 
   }
 
+  returnAWeekTotalSteps(userID, date) {
+    return this.returnAWeekStepCount(userID, date).reduce((total, steps) => {
+      return total += steps;
+    }, 0)
+  }
+
   returnAWeekFlightOfStairs(userID, date) {
     let dateIndex = this.activityData[userID-1].activityData.findIndex(day => (JSON.stringify(day.date)) === JSON.stringify(date));
     let dateBack = dateIndex - 6
