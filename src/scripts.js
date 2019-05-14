@@ -25,7 +25,8 @@ function updateOnLoad() {
   updateRank();
   generateSecondUser();
   generateThirdUser();
-  compareThreeFriends()
+  compareThreeFriends();
+  userIncrementDates(randomID);
 }
 
 function updateUserName() {
@@ -163,8 +164,26 @@ function compareThreeFriends() {
   let thirdUserName = $('.main-top-right--friends-card--name2-value').text();
   let friends = [{name: mainUsername, steps: mainUserTotalSteps}, {name: secondUserName, steps: friendUser2totalSteps},{name: thirdUserName, steps: friendUser3totalSteps}];
   let orderedSteps = friends.sort((a, b) => a.steps - b.steps).pop();
-  console.log(orderedSteps)
   $('.main-top-right--friends-card--best-name').text(orderedSteps.name);
   $('.main-top-right--friends-card--best-value').text(orderedSteps.steps);
+}
+
+function userIncrementDates(randomID) {
+  let allUserDates = activityData.find(el => el.userID === randomID).activityData;
+  let dates = [];
+  let uniqueDates = []
+  for (let i = 0; i < allUserDates.length-2; i++) {
+    if (allUserDates[i].numSteps<allUserDates[i+1].numSteps && allUserDates[i+1].numSteps< allUserDates[i+2].numSteps) {
+      dates.push(allUserDates[i].date)
+      dates.push(allUserDates[i+1].date)
+      dates.push(allUserDates[i+2].date)
+    }
+  }
+  dates.forEach(date => {
+    if (!uniqueDates.includes(date)) {
+      uniqueDates.push(date);
+    }
+  });
+  $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)
 }
 
