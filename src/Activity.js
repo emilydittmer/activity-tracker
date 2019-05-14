@@ -94,6 +94,23 @@ class Activity {
     let specificUser = this.activityData[userID-1].activityData;
     return specificUser.find(el => el.date === date).flightsOfStairs;
   }
+  
+  userIncrementDates(userID) {
+    let threeDays = [];
+    let dates = [];
+    let dataPerUser = this.activityData
+    var x = dataPerUser.find(el => el.userID === userID).activityData
+    x.forEach(function(user) {
+      if (threeDays.length >= 3) {
+        threeDays.shift()
+      }
+      threeDays.push(user.numSteps);
+      if (threeDays[2] > threeDays[1] && threeDays[1] > threeDays[0]) {
+        dates.push(user.date)
+      }
+    })
+    return dates
+  }
 
 }
 

@@ -82,4 +82,8 @@ describe('Activity', function() {
     expect(activity.returnUserFlightsOfStairsInADay(1, '06/05/2019')).to.equal(46);  
   });
 
+  it('should return what days had increasing steps for 3 or more days for a user', function() {
+    expect(activity.userIncrementDates(1)).to.eql(["10/05/2019"]);
+  })
+
 });

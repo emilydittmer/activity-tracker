@@ -170,22 +170,7 @@ function compareThreeFriends() {
 }
 
 function userIncrementDates(randomID) {
-  let allUserDates = activityData.find(el => el.userID === randomID).activityData;
-  let dates = [];
-  let uniqueDates = []
-  for (let i = 0; i < allUserDates.length-2; i++) {
-    if (allUserDates[i].numSteps<allUserDates[i+1].numSteps && allUserDates[i+1].numSteps< allUserDates[i+2].numSteps) {
-      dates.push(allUserDates[i].date)
-      dates.push(allUserDates[i+1].date)
-      dates.push(allUserDates[i+2].date)
-    }
-  }
-  dates.forEach(date => {
-    if (!uniqueDates.includes(date)) {
-      uniqueDates.push(date);
-    }
-  });
-  $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)
+  $('.main-bottom-right--activity-card--best-dates-value').text(activity.userIncrementDates(randomID))
 }
 
 function displayAverageStrideLength() {
