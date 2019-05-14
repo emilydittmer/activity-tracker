@@ -173,19 +173,19 @@ function userIncrementDates(randomID) {
   let allUserDates = activityData.find(el => el.userID === randomID).activityData;
   let dates = [];
   let uniqueDates = []
-  allUserDates.map((el, i) => {
-    allUserDates[i-1] === undefined ? null : el === allUserDates[i-1] ? null : allUserDates[i-1] < el ? dates.push(true) : dates.push(false)
-  })
-  if (dates.includes(true) && dates.includes(false)) {
-    return null
-  } else if (dates.includes(true)) {
+  for (let i = 0; i < allUserDates.length-2; i++) {
+    if (allUserDates[i].numSteps<allUserDates[i+1].numSteps && allUserDates[i+1].numSteps< allUserDates[i+2].numSteps) {
+      dates.push(allUserDates[i].date)
+      dates.push(allUserDates[i+1].date)
+      dates.push(allUserDates[i+2].date)
+    }
+  }
   dates.forEach(date => {
     if (!uniqueDates.includes(date)) {
       uniqueDates.push(date);
     }
   });
-  $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)   
-  }
+  $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)
 }
 
 function displayAverageStrideLength() {
