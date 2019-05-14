@@ -169,7 +169,7 @@ function compareThreeFriends() {
   $('.main-top-right--friends-card--best-value').text(orderedSteps.steps);
 }
 
-function userIncrementDates(randomID) {
+function userIncrementDates() {
   $('.main-bottom-right--activity-card--best-dates-value').text(activity.userIncrementDates(randomID))
 }
 
