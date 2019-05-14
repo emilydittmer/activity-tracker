@@ -27,6 +27,7 @@ function updateOnLoad() {
   generateThirdUser();
   compareThreeFriends();
   userIncrementDates(randomID);
+  displayAverageStrideLength();
 }
 
 function updateUserName() {
@@ -185,5 +186,9 @@ function userIncrementDates(randomID) {
     }
   });
   $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)
+}
+
+function displayAverageStrideLength() {
+  $('.main-top-right--common-trends-card--average-stride-length-value').text(userRepository.returnAverageStrideLength())
 }
 

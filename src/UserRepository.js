@@ -19,6 +19,13 @@ class UserRepository {
     return average;
   }
 
+  returnAverageStrideLength() {
+    let average = this.dataFilepath.reduce((total, user) => {
+      return total += user.strideLength / this.dataFilepath.length;
+    }, 0)
+    return Number(average.toFixed(1));
+  }
+
   returnAllUsersAddresses() {
     let allAddresses = this.dataFilepath.map((user) => {
       return user.address;
