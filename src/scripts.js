@@ -183,7 +183,7 @@ function userIncrementDates(randomID) {
     if (!uniqueDates.includes(date)) {
       uniqueDates.push(date);
     }
-  })
+  });
   $('.main-bottom-right--activity-card--best-dates-value').text(uniqueDates)
 }
 
