@@ -1,5 +1,24 @@
 window.addEventListener('load', updateOnLoad)
-let randomID = Math.floor(Math.random() * userData.length) + 1;
+
+function generateUserIds() {
+  let allUsers = userRepository.dataFilepath.map(el => el.id)
+  let currentIndex = allUsers.length;
+  let temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = allUsers[currentIndex];
+    allUsers[currentIndex] = allUsers[randomIndex];
+    allUsers[randomIndex] = temporaryValue;
+  }
+  let threeUsers = allUsers.slice(0, 3);
+  return threeUsers;
+}
 
 let userRepository= new UserRepository(userData);
 let hydrationRepository = new HydrationRepository(hydrationData, UserRepository);
@@ -8,9 +27,14 @@ let sleep = new Sleep(sleepData);
 let activityRepository = new ActivityRepository(activityData,userData);
 let activity = new Activity(activityData, userData);
 let newDate =  new Date();
-let user = new User(userData[randomID -1]);
+
+const randomID = generateUserIds()[0]
+const randomID2 = generateUserIds()[1]
+const randomID3 = generateUserIds()[2]
+
 
 function updateOnLoad() {
+  generateUserIds();
   updateUserName();
   updateStepCount();
   updateAverageStepCount();
@@ -29,6 +53,8 @@ function updateOnLoad() {
   userIncrementDates(randomID);
   displayAverageStrideLength();
 }
+
+let user = new User(userData[randomID -1]);
 
 function updateUserName() {
   $('.header--user-name').text(user.returnFirstName());
@@ -141,7 +167,6 @@ function updateRank() {
 }
 
 function generateSecondUser() {
-  let randomID2 = Math.floor(Math.random() * userData.length) + 1;
   let user2 = new User(userData[randomID2 -1]);
   let activity2 = new Activity(activityData, userData);
   let name2 = $('.main-top-right--friends-card--name1-value').text(user2.returnFirstName());
@@ -149,7 +174,6 @@ function generateSecondUser() {
 }
 
 function generateThirdUser() {
-  let randomID3 = Math.floor(Math.random() * userData.length) + 1;
   let user3 = new User(userData[randomID3 -1]);
   let activity3 = new Activity(activityData, userData);
   $('.main-top-right--friends-card--name2-value').text(user3.returnFirstName());
