@@ -1,112 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Activity Tracker | Emily Dittmer & Andreea Hanson FEE 1903</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,600,800" rel="stylesheet">
-</head>
+  <head>
+    <title>Activity Tracker | Emily Dittmer & Andreea Hanson FEE 1903</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,600,800"
+      rel="stylesheet"
+    />
+  </head>
   <body>
     <header>
-      <h1>Welcome to Activity Tracker, <span class="header--user-name"></span>!</h1>
-      <p id="date"></p>
+      <h1>Welcome to Activity Tracker!</h1>
     </header>
+    <aside>
+      <div class="user-image-container">
+        <img
+          src="./images/user.svg"
+          alt="User profile picture"
+          class="user-image"
+        />
+      </div>
+      <h2 class="aside--user-name aside-info"></h2>
+      <hr />
+      <h2 class="aside--goals aside-info aside-titles">Goals:</h2>
+      <h3 class="aside--step-count-key aside-info">
+        Step Count: <span class="aside--step-count-value">#</span>
+      </h3>
+      <h3 class="aside--step-count-comparison-key aside-info">
+        Your daily step count is
+        <span class="aside--step-count-comparison-value"> </span> the average.
+      </h3>
+      <h3 class="aside--increase-step-count-title aside-info">
+        Days Your Step Count Increased from Previous:
+      </h3>
+      <p class="aside--increase-step-count-value aside-info"></p>
+      <h2 class="aside--trends aside-info aside-titles">Common Trends:</h2>
+      <h3 class="aside--trends--step-count-goal-key aside-info">
+        Average Step Count Goal:
+        <span class="aside--trends--step-count-goal-value"></span>
+      </h3>
+      <h3 class="aside--trends--average-stride-length-key aside-info">
+        Average Stride Length:
+        <span class="aside--trends--average-stride-length-value"></span>
+      </h3>
+      <h3 class="aside--trends--most-common-state-key aside-info">
+        Most Common State:
+        <span class="aside--trends--most-common-state-value"></span>
+      </h3>
+    </aside>
     <main>
-      <article class="main-top-left--friends-card">
-        <h2 class="main-top-right--friends-card--title">Friends</h2>
-        <h3 class="main-top-right--friends-card--name1-key">Friend1 <span class="main-top-right--friends-card--name1-value">name</span>: <span class="main-top-right--friends-card--number-of-steps1-value"> </span> steps</h3>
-        <h3 class="main-top-right--friends-card--name2-key">Friend2 <span class="main-top-right--friends-card--name2-value">name</span>: <span class="main-top-right--friends-card--number-of-steps2-value"> </span> steps</h3>
-        <h3 class="main-top-right--friends-card--best">Best walker this week is <span class="main-top-right--friends-card--best-name">name</span> with <span class="main-top-right--friends-card--best-value"></span> steps</h3>
-      </article>
-      <article class="main-bottom-left--hydration-card">
-        <h2 class="main-bottom--hydration-card--title">Hydration level</h2>
-        <p class="main-bottom--hydration-card--number-of-ounces-key">Today <span class="main-bottom--hydration-card--number-of-ounces-value">#</span> oz</p>
-        <ul></ul>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Yesterday <span class="main-bottom--hydration-card--number-of-ounces-value yesterday">#</span> oz</p>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Two days ago <span class="main-bottom--hydration-card--number-of-ounces-value two-days-ago">#</span> oz</h3>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Three days ago <span class="main-bottom--hydration-card--number-of-ounces-value three-days-ago">#</span> oz</p>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Four days ago <span class="main-bottom--hydration-card--number-of-ounces-value four-days-ago">#</span> oz</p>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Five days ago <span class="main-bottom--hydration-card--number-of-ounces-value five-days-ago">#</span> oz</p>
-        <p class="main-bottom--hydration-card--number-of-ounces-past-key">Six days ago <span class="main-bottom--hydration-card--number-of-ounces-value six-days-ago">#</span> oz</p>
-      </article>
-      <article class="main-top-center--goals-card">
-        <h2 class="main-top-center--goals-card--title">Goals</h2>
-        <h3 class="main-top-center--goals-card--step-count-key">Step Count: <span class="main-top-center--step-count-value">#</span></h3>
-        <h3 class="main-top-center--goals-card--step-count-comparison-key">Your daily step count is <span class="main-top-center--goals-card--step-count-comparison-value"> </span> the average.</h3>
-      </article>
-      <article class="main-bottom-center--sleep-card">
-        <h2 class="main-bottom-center--sleep-card-title">Sleep</h2>
+      <section class="main-top--today-stats">
+        <h2 class="main-top--today--title">
+          Today is: <span id="date"></span>
+        </h2>
+        <div class="main-top-today-stats--all-stats">
+          <article class="main-top--today-stats--activity">
+            <h3 class="main-top--today-stats--activity-title">Activity</h3>
+            <img
+              src="./images/activity.svg"
+              alt="Cartoon of user running"
+              class="activity-image today-image"
+            />
+            <h4 class="main-top--today-stats--activity-steps-key today-keys">
+              Steps:
+              <span class="main-top--today-stats--activity-steps-value"></span>
+            </h4>
+            <h4
+              class="main-top--today-stats--activity-flights-of-stairs-key today-keys"
+            >
+              Flights of Stairs:
+              <span
+                class="main-top--today-stats--activity-flights-of-stairs-value today-values"
+              ></span>
+            </h4>
+            <h4
+              class="main-top--today-stats--activity-minutes-active-key today-keys"
+            >
+              Minutes Active:
+              <span
+                class="main-top--today-stats--activity-minutes-active--value today-values"
+              ></span>
+            </h4>
+            <h4
+              class="main-top--today-stats--activity-miles-walked-key today-keys"
+            >
+              Miles Walked:
+              <span
+                class="main-top--today-stats--activity-miles-walked--value today-values"
+              ></span>
+            </h4>
+          </article>
+          <article class="main-top--today-stats--sleep">
+            <h3 class="main-top--today-stats--sleep-title">Sleep</h3>
+            <img
+              src="./images/sleep.svg"
+              alt="ZZZ"
+              class="sleep-image today-image"
+            />
+            <h4 class="main-top--today-stats--sleep-hours-key today-keys">
+              Hours of Sleep:
+              <span
+                class="main-top--today-stats--sleep-hours-value today-values"
+              ></span>
+            </h4>
+            <h4 class="main-top--today-stats--sleep-quality-key today-keys">
+              Quality of Sleep:
+              <span
+                class="main-top--today-stats--sleep-quality-value today-values"
+              ></span>
+            </h4>
+          </article>
+          <article class="main-top--today-stats--hydration">
+            <h3 class="main-top--today-stats--hydration-title">Hydration</h3>
+            <img
+              src="./images/water.svg"
+              alt="Cartoon of water droplet"
+              class="hydration-image today-image"
+            />
+            <h4
+              class="main-top--today-stats--hydration-numOunces-key today-keys"
+            >
+              Ounces:
+              <span
+                class="main-top--today-stats--hydration-numOunces-value today-values"
+                >x</span
+              >
+            </h4>
+          </article>
+        </div>
+      </section>
+      <section class="main-bottom--weekly-stats">
+        <h2 class="main-bottom--weekly-stats--title">Weekly Stats</h2>
+        <div class="main-top-weekly-stats--all-stats">
+          <article class="main-bottom--weekly-stats--activity">
+            <h3 class="main-bottom--weekly-stats--activity-title">Activity</h3>
+            <h4>Flights of Stairs:</h4>
+            <p
+              class="main-bottom--activity-card--flights-of-stairs-week activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--flights-of-stairs-week-value activity-values"
+                >#</span
+              >
+            </p>
+            <p
+              class="main-bottom--activity-card--flights-of-stairs-rank activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--flights-of-stairs-rank-value activity-values"
+                >#</span
+              >%
+            </p>
+            <h4>Number of Steps:</h4>
+            <p
+              class="main-bottom--activity-card--number-of-steps-week activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--number-of-steps-week-value activity-values"
+                >#</span
+              >
+            </p>
+            <p
+              class="main-bottom--activity-card--number-of-steps-rank activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--number-of-steps-rank-value activity-values"
+                >#</span
+              >%
+            </p>
+            <h4>Minutes Active:</h4>
+            <p
+              class="main-bottom--activity-card--minutes-active-week activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--minutes-active-week-value activity-values"
+                >#</span
+              >
+            </p>
+            <p
+              class="main-bottom--activity-card--minutes-active-rank activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--minutes-active-rank-value activity-values"
+                >#</span
+              >%
+            </p>
+            <h4>Miles Walked:</h4>
+            <p
+              class="main-bottom--activity-card--miles-walked-week activity-values"
+            >
+              <span
+                class="main-bottom--activity-card--miles-walked-week-value activity-values"
+                >#</span
+              >
+            </p>
+            <p
+              class="main-bottom--activity-card--miles-walked-rank activity-values">
+              <span
+                class="main-bottom--activity-card--miles-walked-rank-value activity-values"
+                >#</span>%
+            </p>
+            <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
+              All Steps this Week:
+              <span
+                class="main-center-weekly-stats--activity-all-week-steps-value"
+              ></span>
+            </h4>
+          </article>
+          <article class="main-bottom--weekly-stats--sleep">
+            <h3 class="main-bottom--weekly-stats--sleep-title">Sleep</h3>
+            <table>
+              <tr>
+                <td></td>
+                <td>Sleep Hours</td>
+                <td>Quality of Sleep</td>
+              </tr>
+              <tr>
+                <td>Yesterday</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-yesterday"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-yesterday"
+                ></td>
+              </tr>
+              <tr>
+                <td>Two Days Ago</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-two-days-ago"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-two-days-ago"
+                ></td>
+              </tr>
+              <tr>
+                <td>Three Days Ago</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-three-days-ago"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-three-days-ago"
+                ></td>
+              </tr>
+              <tr>
+                <td>Four Days Ago</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-four-days-ago"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-four-days-ago"
+                ></td>
+              </tr>
+              <tr>
+                <td>Five Days Ago</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-five-days-ago"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-five-days-ago"
+                ></td>
+              </tr>
+              <tr>
+                <td>Six Days Ago</td>
+                <td
+                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-six-days-ago"
+                ></td>
+                <td
+                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-six-days-ago"
+                ></td>
+              </tr>
+            </table>
 
-        <section class="main-bottom-center--sleep-card--hours-of-sleep-section box">
-          <h3>Hours of Sleep</h3>
-          <p>Today: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-today">#</span> hours</p>
-          <p>Yesterday: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-yesterday">#</span> hours</p>
-          <p>Two days ago: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-two-days-ago">#</span> hours</p>
-          <p>Three days ago: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-three-days-ago">#</span> hours</p>
-          <p>Four days ago: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-four-days-ago">#</span> hours</p>
-          <p>Five days ago: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-five-days-ago">#</span> hours</p>
-          <p>Six days ago: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-six-days-ago">#</span> hours</p>
-          <h3>All time average: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-count-average">#</span></h3>
-        </section>
-
-        <section class="main-bottom-center--sleep-card--hours-of-sleep-section box">
-          <h3>Sleep Quality</h3>
-          <p>Today: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-today">#</span> hours</h4>
-          <p>Yesterday: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-yesterday">#</span> hours</h4>
-          <p>Two days ago: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-two-days-ago">#</span> hours</h4>
-          <p>Three days ago: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-three-days-ago">#</span> hours</h4>
-          <p>Four days ago: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-four-days-ago">#</span> hours</h4>
-          <p>Five days ago: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-five-days-ago">#</span> hours</h4>
-          <p>Six days ago: <span class="main-bottom-center--sleep-card--sleep-quality-value sleepq-six-days-ago">#</span> hours</h4>
-          <h3>All time average: <span class="main-bottom-center--sleep-card--hours-of-sleep-value sleep-quality-average">#</span></h3>
-        </section>
-
-      </article>
-        <article class="main-top-right--common-trends-card">
-        <h2 class="main-top-right--common-trends-card--title">Common Trends</h2>
-        <h3 class="main-top-right--common-trends-card--step-count-trend-key">Average Step Count Trend: <span class="main-top-right--common-trends-card--step-count-trend-value"></span></span></h3>
-        <h3 class="main-top-right--common-trends-card--most-common-state-key">Most Common State: <span class="main-top-right--common-trends-card--most-common-state-value"></span></span></h3>
-        <h3 class="main-top-right--common-trends-card--average-stride-length-key">Average Stride Length: <span class="main-top-right--common-trends-card--average-stride-length-value"></span></span></h3>      
-      </article>
-      <article class="main-bottom-right--activity-card">
-        <h2 class="main-bottom-right--activity-card--title">Activity</h2>
-        <table>
-          <tr>
-            <td></td>
-            <td>Today</td>
-            <td>Week's Work</td>
-            <td>Your rank</td>
-          </tr>
-          <tr>
-            <td>Flights of Stairs</td>
-            <td class="main-bottom-right--activity-card--flights-of-stairs-today"><span class="main-bottom-right--activity-card--flights-of-stairs-today-value">#</span></td>
-            <td class="main-bottom-right--activity-card--flights-of-stairs-week"><span class="main-bottom-right--activity-card--flights-of-stairs-week-value">#</span></td>
-            <td class="main-bottom-right--activity-card--flights-of-stairs-rank"><span class="main-bottom-right--activity-card--flights-of-stairs-rank-value">#</span>%</td>
-          </tr>
-          <tr>
-            <td>Number of Steps</td>
-            <td class="main-bottom-right--activity-card--number-of-steps-today"><span class="main-bottom-right--activity-card--number-of-steps-today-value">#</span></td>
-            <td class="main-bottom-right--activity-card--number-of-steps-week"><span class="main-bottom-right--activity-card--number-of-steps-week-value">#</span><p class="total-steps-count-key">Total steps count: <span class="total-step-count-value">value</span></p></td>
-            <td class="main-bottom-right--activity-card--number-of-steps-rank"><span class="main-bottom-right--activity-card--number-of-steps-rank-value">#</span>%</td>
-          </tr>
-          <tr>
-            <td>Minutes Active</td>
-            <td class="main-bottom-right--activity-card--minutes-active-today"><span class="main-bottom-right--activity-card--minutes-active-today-value">#</span></td>
-            <td class="main-bottom-right--activity-card--minutes-active-week"><span class="main-bottom-right--activity-card--minutes-active-week-value">#</span></td>
-            <td class="main-bottom-right--activity-card--minutes-active-rank"><span class="main-bottom-right--activity-card--minutes-active-rank-value">#</span>%</td>
-          </tr>
-          <tr>
-            <td>Miles Walked</td>
-            <td class="main-bottom-right--activity-card--miles-walked-today"><span class="main-bottom-right--activity-card--miles-walked-today-value">#</span></td>
-            <td class="main-bottom-right--activity-card--miles-walked-week"><span class="main-bottom-right--activity-card--miles-walked-week-value">#</span></td>
-            <td class="main-bottom-right--activity-card--miles-walked-rank"><span class="main-bottom-right--activity-card--miles-walked-rank-value">#</span>%</td>
-          </tr>
-        </table>
-        <h3 class="main-bottom-right--activity-card--best-dates-key">Days with Increasing Steps: </h3><p class="main-bottom-right--activity-card--best-dates-value"></p>
-      </article>
+            <h3>
+              All User Average Sleep Hours:
+              <span
+                class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average"
+                >#</span
+              >
+            </h3>
+            <h3>
+              All User Average Sleep Quality:
+              <span
+                class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average"
+                >#</span
+              >
+            </h3>
+          </article>
+          <article class="main-bottom--weekly-stats--hydration">
+            <h3 class="main-bottom--weekly-stats--hydration-title">
+              Hydration
+            </h3>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Yesterday:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value yesterday"
+                >#</span
+              >
+              oz
+            </p>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Two days ago:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value two-days-ago"
+                >#</span
+              >
+              oz
+            </p>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Three days ago:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value three-days-ago"
+                >#</span
+              >
+              oz
+            </p>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Four days ago:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value four-days-ago"
+                >#</span
+              >
+              oz
+            </p>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Five days ago:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value five-days-ago"
+                >#</span
+              >
+              oz
+            </p>
+            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
+              Six days ago:
+            </h4>
+            <p>
+              <span
+                class="main-bottom--hydration-card--number-of-ounces-value six-days-ago"
+                >#</span
+              >
+              oz
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
+    <section class="right--friends-stats">
+      <h2 class="right--friends-stats--title">Friends Weekly Stats</h2>
+      <h3>Step Count:</h3>
+      <h4 class="right--friends-stats--name2-value"></h4>
+      <p>
+        <span class="right--friends-stats--number-of-steps2-value"></span> steps
+      </p>
+      <h4 class="right--friends-stats--name3-value"></h4>
+      <p>
+        <span class="right--friends-stats--number-of-steps3-value"></span> steps
+      </p>
+      <h4 class="right--friends-stats--best">
+        Best walker this week was
+        <span class="right--friends-stats--best-name">name</span> with
+        <span class="right--friends-stats--best-value"></span> steps
+      </h4>
+    </section>
     <script src="./src/ActivityRepository.js"></script>
     <script src="./src/Activity.js"></script>
     <script src="./data/activity.js"></script>
@@ -118,10 +385,8 @@
     <script src="./data/hydration.js"></script>
     <script src="./src/UserRepository.js"></script>
     <script src="./src/User.js"></script>
-    <!-- <script src="./src/UserRepository.js"></script> -->
     <script src="./data/users.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./src/scripts.js"></script>
   </body>
-
 </html>
