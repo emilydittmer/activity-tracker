@@ -5,17 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="normalize.css" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,600,800"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" type="text/css" href="style.css" /><link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:100,300,400,500,700,800,900" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <h1>Welcome to Activity Tracker!</h1>
-    </header>
     <aside>
+      <h1>Welcome to Activity Tracker!</h1>
+      <h2 class="main-top--today--title">
+          Today is: <span id="date"></span>
+      </h2>
       <div class="user-image-container">
         <img
           src="./images/user.svg"
@@ -36,6 +33,7 @@
       <h3 class="aside--increase-step-count-title aside-info">
         Days Your Step Count Increased from Previous:
       </h3>
+      <ul class="list-container"></ul>
       <p class="aside--increase-step-count-value aside-info"></p>
       <h2 class="aside--trends aside-info aside-titles">Common Trends:</h2>
       <h3 class="aside--trends--step-count-goal-key aside-info">
@@ -52,328 +50,129 @@
       </h3>
     </aside>
     <main>
-      <section class="main-top--today-stats">
-        <h2 class="main-top--today--title">
-          Today is: <span id="date"></span>
-        </h2>
-        <div class="main-top-today-stats--all-stats">
-          <article class="main-top--today-stats--activity">
-            <h3 class="main-top--today-stats--activity-title">Activity</h3>
-            <img
-              src="./images/activity.svg"
-              alt="Cartoon of user running"
-              class="activity-image today-image"
-            />
-            <h4 class="main-top--today-stats--activity-steps-key today-keys">
-              Steps:
-              <span class="main-top--today-stats--activity-steps-value"></span>
-            </h4>
-            <h4
-              class="main-top--today-stats--activity-flights-of-stairs-key today-keys"
-            >
-              Flights of Stairs:
-              <span
-                class="main-top--today-stats--activity-flights-of-stairs-value today-values"
-              ></span>
-            </h4>
-            <h4
-              class="main-top--today-stats--activity-minutes-active-key today-keys"
-            >
-              Minutes Active:
-              <span
-                class="main-top--today-stats--activity-minutes-active--value today-values"
-              ></span>
-            </h4>
-            <h4
-              class="main-top--today-stats--activity-miles-walked-key today-keys"
-            >
-              Miles Walked:
-              <span
-                class="main-top--today-stats--activity-miles-walked--value today-values"
-              ></span>
-            </h4>
-          </article>
-          <article class="main-top--today-stats--sleep">
-            <h3 class="main-top--today-stats--sleep-title">Sleep</h3>
-            <img
-              src="./images/sleep.svg"
-              alt="ZZZ"
-              class="sleep-image today-image"
-            />
-            <h4 class="main-top--today-stats--sleep-hours-key today-keys">
-              Hours of Sleep:
-              <span
-                class="main-top--today-stats--sleep-hours-value today-values"
-              ></span>
-            </h4>
-            <h4 class="main-top--today-stats--sleep-quality-key today-keys">
-              Quality of Sleep:
-              <span
-                class="main-top--today-stats--sleep-quality-value today-values"
-              ></span>
-            </h4>
-          </article>
-          <article class="main-top--today-stats--hydration">
-            <h3 class="main-top--today-stats--hydration-title">Hydration</h3>
-            <img
-              src="./images/water.svg"
-              alt="Cartoon of water droplet"
-              class="hydration-image today-image"
-            />
-            <h4
-              class="main-top--today-stats--hydration-numOunces-key today-keys"
-            >
-              Ounces:
-              <span
-                class="main-top--today-stats--hydration-numOunces-value today-values"
-                >x</span
-              >
-            </h4>
-          </article>
-        </div>
+      <section class="main-top--today-stats--activity">
+        <h3 class="main-top--today-stats--activity-title">Activity</h3>
+        <img
+          src="./images/activity.svg"
+          alt="Cartoon of user running"
+          class="activity-image today-image"
+        />
+        <h4 class="main-top--today-stats--activity-steps-key today-keys">
+          Steps:
+        <span class="main-top--today-stats--activity-steps-value"></span>
+        </h4>
+        <h4
+          class="main-top--today-stats--activity-flights-of-stairs-key today-keys"
+        >
+          Flights of Stairs:
+          <span
+            class="main-top--today-stats--activity-flights-of-stairs-value today-values"
+          ></span>
+        </h4>
+        <h4
+          class="main-top--today-stats--activity-minutes-active-key today-keys"
+        >
+          Minutes Active:
+          <span
+            class="main-top--today-stats--activity-minutes-active--value today-values"
+          ></span>
+        </h4>
+        <h4
+          class="main-top--today-stats--activity-miles-walked-key today-keys"
+        >
+          Miles Walked:
+          <span
+            class="main-top--today-stats--activity-miles-walked--value today-values"
+          ></span>
+        </h4>
       </section>
-      <section class="main-bottom--weekly-stats">
-        <h2 class="main-bottom--weekly-stats--title">Weekly Stats</h2>
-        <div class="main-top-weekly-stats--all-stats">
-          <article class="main-bottom--weekly-stats--activity">
-            <h3 class="main-bottom--weekly-stats--activity-title">Activity</h3>
-            <h4>Flights of Stairs:</h4>
-            <p
-              class="main-bottom--activity-card--flights-of-stairs-week activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--flights-of-stairs-week-value activity-values"
-                >#</span
-              >
-            </p>
-            <p
-              class="main-bottom--activity-card--flights-of-stairs-rank activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--flights-of-stairs-rank-value activity-values"
-                >#</span
-              >%
-            </p>
-            <h4>Number of Steps:</h4>
-            <p
-              class="main-bottom--activity-card--number-of-steps-week activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--number-of-steps-week-value activity-values"
-                >#</span
-              >
-            </p>
-            <p
-              class="main-bottom--activity-card--number-of-steps-rank activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--number-of-steps-rank-value activity-values"
-                >#</span
-              >%
-            </p>
-            <h4>Minutes Active:</h4>
-            <p
-              class="main-bottom--activity-card--minutes-active-week activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--minutes-active-week-value activity-values"
-                >#</span
-              >
-            </p>
-            <p
-              class="main-bottom--activity-card--minutes-active-rank activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--minutes-active-rank-value activity-values"
-                >#</span
-              >%
-            </p>
-            <h4>Miles Walked:</h4>
-            <p
-              class="main-bottom--activity-card--miles-walked-week activity-values"
-            >
-              <span
-                class="main-bottom--activity-card--miles-walked-week-value activity-values"
-                >#</span
-              >
-            </p>
-            <p
-              class="main-bottom--activity-card--miles-walked-rank activity-values">
-              <span
-                class="main-bottom--activity-card--miles-walked-rank-value activity-values"
-                >#</span>%
-            </p>
-            <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
-              All Steps this Week:
-              <span
-                class="main-center-weekly-stats--activity-all-week-steps-value"
-              ></span>
-            </h4>
-          </article>
-          <article class="main-bottom--weekly-stats--sleep">
-            <h3 class="main-bottom--weekly-stats--sleep-title">Sleep</h3>
-            <table>
-              <tr>
-                <td></td>
-                <td>Sleep Hours</td>
-                <td>Quality of Sleep</td>
-              </tr>
-              <tr>
-                <td>Yesterday</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-yesterday"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-yesterday"
-                ></td>
-              </tr>
-              <tr>
-                <td>Two Days Ago</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-two-days-ago"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-two-days-ago"
-                ></td>
-              </tr>
-              <tr>
-                <td>Three Days Ago</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-three-days-ago"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-three-days-ago"
-                ></td>
-              </tr>
-              <tr>
-                <td>Four Days Ago</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-four-days-ago"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-four-days-ago"
-                ></td>
-              </tr>
-              <tr>
-                <td>Five Days Ago</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-five-days-ago"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-five-days-ago"
-                ></td>
-              </tr>
-              <tr>
-                <td>Six Days Ago</td>
-                <td
-                  class="main-bottom--sleep-card--hours-of-sleep-key sleep-six-days-ago"
-                ></td>
-                <td
-                  class="main-bottom-center--sleep-card--sleep-quality-value sleepq-six-days-ago"
-                ></td>
-              </tr>
-            </table>
-
-            <h3>
-              All User Average Sleep Hours:
-              <span
-                class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average"
-                >#</span
-              >
-            </h3>
-            <h3>
-              All User Average Sleep Quality:
-              <span
-                class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average"
-                >#</span
-              >
-            </h3>
-          </article>
-          <article class="main-bottom--weekly-stats--hydration">
-            <h3 class="main-bottom--weekly-stats--hydration-title">
-              Hydration
-            </h3>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Yesterday:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value yesterday"
-                >#</span
-              >
-              oz
-            </p>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Two days ago:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value two-days-ago"
-                >#</span
-              >
-              oz
-            </p>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Three days ago:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value three-days-ago"
-                >#</span
-              >
-              oz
-            </p>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Four days ago:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value four-days-ago"
-                >#</span
-              >
-              oz
-            </p>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Five days ago:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value five-days-ago"
-                >#</span
-              >
-              oz
-            </p>
-            <h4 class="main-bottom--hydration-card--number-of-ounces-past-key">
-              Six days ago:
-            </h4>
-            <p>
-              <span
-                class="main-bottom--hydration-card--number-of-ounces-value six-days-ago"
-                >#</span
-              >
-              oz
-            </p>
-          </article>
-        </div>
+      <section class="main-top--today-stats--sleep">
+        <h3 class="main-top--today-stats--sleep-title">Sleep</h3>
+        <img
+          src="./images/sleep.svg"
+          alt="ZZZ"
+          class="sleep-image today-image"
+        />
+        <h4 class="main-top--today-stats--sleep-hours-key today-keys">
+          Hours of Sleep:
+          <span
+            class="main-top--today-stats--sleep-hours-value today-values"
+          ></span>
+        </h4>
+        <h4 class="main-top--today-stats--sleep-quality-key today-keys">
+          Quality of Sleep:
+          <span
+            class="main-top--today-stats--sleep-quality-value today-values"
+          ></span>
+        </h4>
+      </section>
+      <section class="main-top--today-stats--hydration">
+        <h3 class="main-top--today-stats--hydration-title">Hydration</h3>
+        <img
+          src="./images/water.svg"
+          alt="Cartoon of water droplet"
+          class="hydration-image today-image"
+        />
+        <h4
+          class="main-top--today-stats--hydration-numOunces-key today-keys"
+        >Ounces: <span class ="main-top--today-stats--hydration-numOunces-value today-value"></span>
+        </h4>
+      </section>
+      <section class="main-bottom--weekly-stats--activity">
+        <h3 class="main-bottom--weekly-stats--activity-title">Activity</h3>
+        <canvas id="activity-steps-chart" class="charts"></canvas>
+        <canvas id="activity-stairs-chart" class="charts"></canvas>
+        <canvas id="activity-minutes-chart" class="charts"></canvas>
+        <canvas id="activity-miles-chart" class="charts"></canvas>
+        <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
+          All Steps this Week:
+          <span
+            class="main-center-weekly-stats--activity-all-week-steps-value"
+          ></span>
+        </h4>
+      </section>
+      <section class="main-bottom--weekly-stats--sleep">
+        <h3 class="main-bottom--weekly-stats--sleep-title">Sleep</h3>
+        <canvas id="sleep-hours-chart" class="charts"></canvas>
+        <canvas id="sleep-quality-chart" class="charts"></canvas>
+        <h3>
+          All User Average Sleep Hours:
+          <span class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average">#</span>
+        </h3>
+        <h3>
+          All User Average Sleep Quality:
+          <span class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average">#</span>
+        </h3>
+      </section>
+      <section class="main-bottom--weekly-stats--hydration">
+        <h3 class="main-bottom--weekly-stats--hydration-title">
+           Hydration
+        </h3>
+        <canvas id="hydration-chart" class="charts"></canvas>
+      </section>    
+      <section class="right--friends-stats">
+        <h3>Weekly Step Count:</h3>
+        <h4 class="right--friends-stats--name2-value"></h4>
+        <p>
+          <span class="right--friends-stats--number-of-steps2-value"></span>
+          steps
+        </p>
+        <h4 class="right--friends-stats--name3-value"></h4>
+        <p>
+          <span class="right--friends-stats--number-of-steps3-value"></span>
+          steps
+        </p>
+        <h4 class="right--friends-stats--best">
+          Best walker this week was
+          <span class="right--friends-stats--best-name">name</span> with
+          <span class="right--friends-stats--best-value"></span> steps
+        </h4>
+      </section>
+      <section class="user-ranks">
+        <p>hi</p>
       </section>
     </main>
-    <section class="right--friends-stats">
-      <h2 class="right--friends-stats--title">Friends Weekly Stats</h2>
-      <h3>Step Count:</h3>
-      <h4 class="right--friends-stats--name2-value"></h4>
-      <p>
-        <span class="right--friends-stats--number-of-steps2-value"></span> steps
-      </p>
-      <h4 class="right--friends-stats--name3-value"></h4>
-      <p>
-        <span class="right--friends-stats--number-of-steps3-value"></span> steps
-      </p>
-      <h4 class="right--friends-stats--best">
-        Best walker this week was
-        <span class="right--friends-stats--best-name">name</span> with
-        <span class="right--friends-stats--best-value"></span> steps
-      </h4>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="./src/ActivityRepository.js"></script>
     <script src="./src/Activity.js"></script>
     <script src="./data/activity.js"></script>
