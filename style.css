@@ -22,7 +22,6 @@ aside {
   grid-column: 1/2;
   background-color: rgba(74,189,172, 0.8);
   color: #fff;
-  margin-top: 20px;
 }
 .user-image-container {
   text-align: center;
