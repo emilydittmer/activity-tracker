@@ -46,9 +46,9 @@ class UserRepository {
   }
 
   compareStepCounts() {
-    if (this.user.userData.dailyStepGoal === this.returnAverageStepGoal()) {
+    if (user.userData.dailyStepGoal === this.returnAverageStepGoal()) {
       return "equal to";
-    } else if (this.user.userData.dailyStepGoal > this.returnAverageStepGoal()) {
+    } else if (user.userData.dailyStepGoal > this.returnAverageStepGoal()) {
       return "greater than"
     } else {
       return "less than"

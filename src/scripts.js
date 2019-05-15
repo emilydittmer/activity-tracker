@@ -16,15 +16,11 @@ function generateUserIds() {
     allUsers[currentIndex] = allUsers[randomIndex];
     allUsers[randomIndex] = temporaryValue;
   }
-  let threeUsers = allUsers.slice(0, 3);
+  let threeUsers = allUsers.splice(0, 3);
   return threeUsers;
 }
 
 let userRepository = new UserRepository(userData);
-let hydrationRepository = new HydrationRepository(
-  hydrationData,
-  UserRepository
-);
 let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
 let activityRepository = new ActivityRepository(activityData, userData);
@@ -81,11 +77,6 @@ function updateMostCommonState() {
 function updateCompareStepCount() {
   $(".aside--step-count-comparison-value").text(
     userRepository.compareStepCounts()
-  );
-}
-function updateUserHydrationIntake() {
-  $(".main-top--today-stats--hydration-numOunces-value").text(
-    hydration.returnWaterIntakeByDate
   );
 }
 
@@ -262,10 +253,10 @@ function updateRank() {
 function generateSecondUser() {
   let user2 = new User(userData[randomID2 - 1]);
   let activity2 = new Activity(activityData, userData);
-  let name2 = $(".right--friends-stats--name2-value").text(
+  $(".right--friends-stats--name2-value").text(
     user2.returnFirstName()
   );
-  let number2 = $(".right--friends-stats--number-of-steps2-value").text(
+  $(".right--friends-stats--number-of-steps2-value").text(
     activity2.returnAWeekTotalSteps(randomID2, date.innerHTML)
   );
 }
