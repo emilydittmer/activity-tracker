@@ -38,7 +38,6 @@ class UserRepository {
     return justStates.map((address) => {
       return address.split(' ').filter((word) => word.length === 2).join('');
     })
-    return justStates
   }
 
   returnMostFrequentState() {
@@ -47,9 +46,9 @@ class UserRepository {
   }
 
   compareStepCounts() {
-    if (user.userData.dailyStepGoal === this.returnAverageStepGoal()) {
+    if (this.user.userData.dailyStepGoal === this.returnAverageStepGoal()) {
       return "equal to";
-    } else if (user.userData.dailyStepGoal > this.returnAverageStepGoal()) {
+    } else if (this.user.userData.dailyStepGoal > this.returnAverageStepGoal()) {
       return "greater than"
     } else {
       return "less than"
