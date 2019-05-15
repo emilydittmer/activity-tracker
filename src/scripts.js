@@ -27,9 +27,11 @@ let activityRepository = new ActivityRepository(activityData, userData);
 let activity = new Activity(activityData, userData);
 let newDate = new Date();
 
-const randomID = generateUserIds()[0];
-const randomID2 = generateUserIds()[1];
-const randomID3 = generateUserIds()[2];
+let randomIDs = generateUserIds()
+
+const randomID = randomIDs[0];
+const randomID2 = randomIDs[1];
+const randomID3 = randomIDs[2]
 
 function updateOnLoad() {
   generateUserIds();
