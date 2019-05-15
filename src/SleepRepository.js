@@ -15,14 +15,14 @@ class SleepRepository {
       allSleepQuality += user.sleepQuality;
       return allSleepQuality;
     }, 0); 
-    return allSleepQuality/allData.length;
+    return allSleepQuality / allData.length;
   }
 
   returnWeekSleepQualityAllUsers(date) {
     let allData = this.dataFilepath.filter(allUsers => {
       let spreadedAllData = Object.entries(allUsers);
       let allUserSleepData = spreadedAllData[1][1];
-      let sevenDays = allUserSleepData.slice((allUserSleepData.findIndex(day => day.date === date) - 6), 7).reduce((total, dailySleep) => total += dailySleep.sleepQuality, 0)/7;
+      let sevenDays = allUserSleepData.slice((allUserSleepData.findIndex(day => day.date === date) - 6), 7).reduce((total, dailySleep) => total += dailySleep.sleepQuality, 0) / 7;
       if (sevenDays > 3) {
         return allUsers
       }
@@ -38,15 +38,15 @@ class SleepRepository {
       r.unshift(element.userID)
       return r
     })
-   let topSleepLengths = topSleepUsers.reduce((total, el) => {
-    total.push(el)
-    return total
-  }, [])
-   let sortedTopSleepLengths = topSleepLengths.sort((a,b)=> a[1]-b[1])
-   let index = sortedTopSleepLengths.length - 1
-   let bestSleep = sortedTopSleepLengths[index]
-   let bestSleepers = sortedTopSleepLengths.filter(el => el === bestSleep)
-   return bestSleepers.map(sleeper => sleeper[0])
+    let topSleepLengths = topSleepUsers.reduce((total, el) => {
+      total.push(el)
+      return total
+    }, [])
+    let sortedTopSleepLengths = topSleepLengths.sort((a, b)=> a[1] - b[1])
+    let index = sortedTopSleepLengths.length - 1
+    let bestSleep = sortedTopSleepLengths[index]
+    let bestSleepers = sortedTopSleepLengths.filter(el => el === bestSleep)
+    return bestSleepers.map(sleeper => sleeper[0])
   }
 
   returnShortestDailySleeper(date) {
@@ -57,15 +57,15 @@ class SleepRepository {
       r.unshift(element.userID)
       return r
     })
-   let leastSleepLengths = worstSleepUsers.reduce((total, el) => {
-    total.push(el)
-    return total
-  }, [])
-   let sortedLeastSleepLengths = leastSleepLengths.sort((a,b)=> b[1]-a[1])
-   let index = sortedLeastSleepLengths.length - 1
-   let worstSleep = sortedLeastSleepLengths[index]
-   let worstSleepers = sortedLeastSleepLengths.filter(el => el === worstSleep)
-   return worstSleepers.map(sleeper => sleeper[0])
+    let leastSleepLengths = worstSleepUsers.reduce((total, el) => {
+      total.push(el)
+      return total
+    }, [])
+    let sortedLeastSleepLengths = leastSleepLengths.sort((a, b)=> b[1] - a[1])
+    let index = sortedLeastSleepLengths.length - 1
+    let worstSleep = sortedLeastSleepLengths[index]
+    let worstSleepers = sortedLeastSleepLengths.filter(el => el === worstSleep)
+    return worstSleepers.map(sleeper => sleeper[0])
   }
 }  
 

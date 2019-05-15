@@ -18,11 +18,11 @@ describe('SleepRepository', function() {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
   }); 
 
-  it('should return the average sleep quality for all users', function(){
+  it('should return the average sleep quality for all users', function() {
     expect(sleepRepository.averageSleepQualityAllUsers()).to.equal(3.357142857142857);
   });
 
-  it('should return the average sleep quality for all users in a given week', function(){
+  it('should return the average sleep quality for all users in a given week', function() {
     expect(sleepRepository.returnWeekSleepQualityAllUsers("12/05/2019")).to.eql([1, 2]);
   });
 

@@ -3,13 +3,13 @@ const expect = chai.expect;
 const User = require('../src/User');
 
 const sampleUser = {
-    "id": 5,
-    "name": "Grady Wolff",
-    "address": "45657 Lindgren Ramp, New Marysechester MT 41312",
-    "email": "Isadore42@gmail.com",
-    "strideLength": 5.5,
-    "dailyStepGoal": 11000
-  }
+  "id": 5,
+  "name": "Grady Wolff",
+  "address": "45657 Lindgren Ramp, New Marysechester MT 41312",
+  "email": "Isadore42@gmail.com",
+  "strideLength": 5.5,
+  "dailyStepGoal": 11000
+}
 
 describe('User', function() {
   let user;

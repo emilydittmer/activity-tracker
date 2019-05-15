@@ -20,12 +20,12 @@ describe('UserRepository', function() {
 
   it('should return the data of a user based on the id of the user', function() { 
     expect(userRepository.returnUserData(2)).to.eql({
-    "id": 2,
-    "name": "Shayne Swift",
-    "address": "747 Dickinson Gardens, South Helga AR 88484-2240",
-    "email": "Lawson74@yahoo.com",
-    "strideLength": 4.5,
-    "dailyStepGoal": 11000
+      "id": 2,
+      "name": "Shayne Swift",
+      "address": "747 Dickinson Gardens, South Helga AR 88484-2240",
+      "email": "Lawson74@yahoo.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 11000
     });
   });  
 

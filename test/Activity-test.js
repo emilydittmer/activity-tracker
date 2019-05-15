@@ -1,8 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Activity = require('../src/Activity');
-const User = require('../src/User');
-const UserRepository = require('../src/UserRepository');
 const userDataSample = require('../src/sample-users');
 const activityDataSample = require('../data/activity-sample');
 
@@ -41,7 +39,7 @@ describe('Activity', function() {
     expect(activity.returnAWeekMinutesActiveAverage(1, "12/05/2019")).to.equal(176);  
   });
 
-  it('should return wether a user did they reach their step goal for a given day', function() {
+  it('should return if a user reached their step goal for a given day', function() {
     expect(activity.returnCheckGoalReachedInGivenDay(1, "12/05/2019")).to.equal(true);  
   });
 
@@ -53,24 +51,24 @@ describe('Activity', function() {
     expect(activity.returnAllTimeClimbingRecord(1)).to.equal(46);  
   });
 
-  it('should return a week of number of steps for a specific user', function(){
+  it('should return a week of number of steps for a specific user', function() {
     expect(activity.returnAWeekStepCount(1, "12/05/2019")).to.eql([7368, 3079, 2387, 6326, 13644, 4337, 9068]);
   });
 
-  it('should return the total number of steps for a specific user in a week', function(){
+  it('should return the total number of steps for a specific user in a week', function() {
     expect(activity.returnAWeekTotalSteps(1, "12/05/2019")).to.equal(46209);
   });
   
 
-  it('should return a week of flights of stairs for a specific user', function(){
+  it('should return a week of flights of stairs for a specific user', function() {
     expect(activity.returnAWeekFlightOfStairs(1, "12/05/2019")).to.eql([46, 4, 4, 26, 13, 15, 3]);
   });
 
-  it('should return a week of active minutes for a specific user', function(){
+  it('should return a week of active minutes for a specific user', function() {
     expect(activity.returnAWeekMinutesActive(1, "12/05/2019")).to.eql([204, 115, 179, 126, 220, 294, 97]);
   });
 
-  it('should return a week of miles walked for a specific user', function(){
+  it('should return a week of miles walked for a specific user', function() {
     expect(activity.returnAWeekMilesWalked(1, "12/05/2019")).to.eql([6, 2, 2, 5, 12, 3, 8]);
   });
 
