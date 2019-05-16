@@ -21,35 +21,21 @@
         />
       </div>
       <h2 class="aside--user-name aside-info"></h2>
-      <p>Address:<p>
-      <p>Email:</p>
+      <p>Address: <span class='user-address'></span><p>
+      <p>Email: <span class='user-email'></span></p>
       <hr />
-      <h2 class="aside--goals aside-info aside-titles">Goals:</h2>
-      <h3 class="aside--step-count-key aside-info">
-        Step Count: <span class="aside--step-count-value">#</span>
+      <h3 class='aside--goals aside-info aside-titles'>Goal step Count: <span class='aside--step-count-value'>#</span>
       </h3>
-      <h3 class="aside--step-count-comparison-key aside-info">
+      <p class='aside--step-count-comparison-key aside-info'>
         Your daily step count is
-        <span class="aside--step-count-comparison-value"> </span> the average.
-      </h3>
+        <span class='aside--step-count-comparison-value'> </span> the average.
+      </p>
+      <hr />
       <h3 class="aside--increase-step-count-title aside-info">
         Days Your Step Count Increased from Previous:
       </h3>
       <ul class="list-container"></ul>
       <p class="aside--increase-step-count-value aside-info"></p>
-      <h2 class="aside--trends aside-info aside-titles">Common Trends:</h2>
-      <h3 class="aside--trends--step-count-goal-key aside-info">
-        Average Step Count Goal:
-        <span class="aside--trends--step-count-goal-value"></span>
-      </h3>
-      <h3 class="aside--trends--average-stride-length-key aside-info">
-        Average Stride Length:
-        <span class="aside--trends--average-stride-length-value"></span>
-      </h3>
-      <h3 class="aside--trends--most-common-state-key aside-info">
-        Most Common State:
-        <span class="aside--trends--most-common-state-value"></span>
-      </h3>
     </aside>
     <main>
       <section class="main-top--today-stats--activity">
@@ -157,6 +143,7 @@
         <canvas id="hydration-chart" class="charts" height="280"></canvas>
       </section>    
       <section class="right--friends-stats">
+        <h3 class="right--friends-stats--friends-title">Friends Stats</h3>
         <h3>Weekly Step Count:</h3>
         <h4 class="right--friends-stats--name2-value"></h4>
         <p>
@@ -173,23 +160,40 @@
           <span class="right--friends-stats--best-name">name</span> with
           <span class="right--friends-stats--best-value"></span> steps
         </h4>
+        <h4 class="right--friends-stats--best">
+            Worst sleeper this week was
+            <span class="right--friends-stats--worst-sleeper-name">name</span> with
+            <span class="right--friends-stats--worst-sleeper-value"></span> hours
+          </h4>
       </section>
       <section class="user-ranks">
-        <h3>Overall </h3>
-        <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
-          All Steps this Week:
-          <span
-            class="main-center-weekly-stats--activity-all-week-steps-value"
-          ></span>
+          <h3 class="common-trends-title">Common trends </h3>
+          <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
+            All Steps this Week:
+            <span
+              class="main-center-weekly-stats--activity-all-week-steps-value"
+            ></span>
+          </h4>
+          <h4>
+              All User Average Sleep Hours:
+              <span class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average">#</span>
+            </h4>
+            <h4>
+              All User Average Sleep Quality:
+              <span class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average">#</span>
+            </h4>
+            <h4 class="aside--trends--step-count-goal-key aside-info">
+          Average Step Count Goal:
+          <span class='aside--trends--step-count-goal-value'></span>
         </h4>
-        <h3>
-            All User Average Sleep Hours:
-            <span class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average">#</span>
-          </h3>
-          <h3>
-            All User Average Sleep Quality:
-            <span class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average">#</span>
-          </h3>
+        <h4 class='aside--trends--average-stride-length-key aside-info'>
+          Average Stride Length:
+          <span class='aside--trends--average-stride-length-value'></span>
+        </h4>
+        <h4 class='aside--trends--most-common-state-key aside-info'>
+          Most Common State:
+          <span class='aside--trends--most-common-state-value'></span>
+        </h4>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

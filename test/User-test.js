@@ -30,5 +30,12 @@ describe('User', function() {
     expect(user.returnFirstName()).to.equal("Grady");
   });
 
+  it('should return the address of the user', function() {
+     expect(user.returnUserAdress()).to.equal('45657 Lindgren Ramp, New Marysechester MT 41312');
+   });
+  
+  it('should return the email address of the user', function() {
+     expect(user.returnUserEmailAdress()).to.equal('Isadore42@gmail.com');
+  });
 
 });
