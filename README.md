@@ -16,6 +16,7 @@ npm install
 ```
 ## Screenshots
 ![Imgur](https://i.imgur.com/iTYimVr.png)
+https://emilydittmer.github.io/activity-tracker/
 
 ## Learning Goals
 
