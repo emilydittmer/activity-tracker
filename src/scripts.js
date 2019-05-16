@@ -318,6 +318,13 @@ var stepsChart = new Chart(ctx, {
           backgroundColor: 'rgb(74,189,172)',
           data: [steps[1], steps[2], steps[3], steps[4], steps[5], steps[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Step Count',
+        fontSize: 20
+    }
   }
 });
 
@@ -332,6 +339,13 @@ var stairsChart = new Chart(ctx, {
           backgroundColor: 'rgb(247,183,51)',
           data: [stairs[1], stairs[2], stairs[3], stairs[4], stairs[5], stairs[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Flights of Stairs Climbed',
+        fontSize: 20
+    }
   }
 });
 
@@ -346,6 +360,13 @@ var minutesChart = new Chart(ctx, {
           backgroundColor: 'rgb(252,74,26)',
           data: [minutes[1], minutes[2], minutes[3], minutes[4], minutes[5], minutes[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Minutes Active',
+        fontSize: 20
+    }
   }
 });
 
@@ -360,34 +381,54 @@ var milesChart = new Chart(ctx, {
           backgroundColor: 'rgb(74,189,172)',
           data: [minutes[1], minutes[2], minutes[3], minutes[4], minutes[5], minutes[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Miles Walked',
+        fontSize: 20
+    }
   }
 });
 
 var ctx = document.getElementById('sleep-hours-chart');
 var sleepHoursChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
 
   data: {
       labels: ['Yesterday', 'Two Days Ago', 'Three Days Ago', 'Four Days Ago', 'Five Days Ago', 'Six Days Ago'],
       datasets: [{
           label: 'Hours of Sleep',
-          backgroundColor: 'rgb(252,74,26)',
+          borderColor: 'rgb(252,74,26)',
           data: [sleepHours[1], sleepHours[2], sleepHours[3], sleepHours[4], sleepHours[5], sleepHours[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Hours of Sleep',
+        fontSize: 20
+    }
   }
 });
 
 var ctx = document.getElementById('sleep-quality-chart');
 var sleepQualityChart = new Chart(ctx, {
-  type: 'bar',
-
+  type: 'line',
   data: {
       labels: ['Yesterday', 'Two Days Ago', 'Three Days Ago', 'Four Days Ago', 'Five Days Ago', 'Six Days Ago'],
       datasets: [{
           label: 'Quality of Sleep',
-          backgroundColor: 'rgb(247,183,51)',
+          borderColor: 'rgb(247,183,51)',
           data: [sleepQuality[1], sleepQuality[2], sleepQuality[3], sleepQuality[4], sleepQuality[5], sleepQuality[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Sleep Quality',
+        fontSize: 20
+    }
   }
 });
 
@@ -402,6 +443,13 @@ var hydrationChart = new Chart(ctx, {
           backgroundColor: 'rgb(247,183,51)',
           data: [hydrationQuantity[1], hydrationQuantity[2], hydrationQuantity[3], hydrationQuantity[4], hydrationQuantity[5], hydrationQuantity[6]]
       }]
+  },
+  options: {
+    title: {
+        display: true,
+        text: 'Weekly Ounces of Water',
+        fontSize: 20
+    }
   }
 });
 

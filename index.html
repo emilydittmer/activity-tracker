@@ -21,6 +21,8 @@
         />
       </div>
       <h2 class="aside--user-name aside-info"></h2>
+      <p>Address:<p>
+      <p>Email:</p>
       <hr />
       <h2 class="aside--goals aside-info aside-titles">Goals:</h2>
       <h3 class="aside--step-count-key aside-info">
@@ -51,7 +53,7 @@
     </aside>
     <main>
       <section class="main-top--today-stats--activity">
-        <h3 class="main-top--today-stats--activity-title">Activity</h3>
+        <h3 class="main-top--today-stats--activity-title">Activity Today</h3>
         <img
           src="./images/activity.svg"
           alt="Cartoon of user running"
@@ -85,9 +87,17 @@
             class="main-top--today-stats--activity-miles-walked--value today-values"
           ></span>
         </h4>
+        <h4
+          class="main-top--today-stats--activity-kilometers-walked-key today-keys"
+        >
+        Kilometers Walked:
+          <span
+            class="main-top--today-stats--activity-kilometers-walked--value today-values"
+          ></span>
+        </h4>
       </section>
       <section class="main-top--today-stats--sleep">
-        <h3 class="main-top--today-stats--sleep-title">Sleep</h3>
+        <h3 class="main-top--today-stats--sleep-title">Sleep Today</h3>
         <img
           src="./images/sleep.svg"
           alt="ZZZ"
@@ -107,7 +117,7 @@
         </h4>
       </section>
       <section class="main-top--today-stats--hydration">
-        <h3 class="main-top--today-stats--hydration-title">Hydration</h3>
+        <h3 class="main-top--today-stats--hydration-title">Hydration Today</h3>
         <img
           src="./images/water.svg"
           alt="Cartoon of water droplet"
@@ -119,36 +129,32 @@
         </h4>
       </section>
       <section class="main-bottom--weekly-stats--activity">
-        <h3 class="main-bottom--weekly-stats--activity-title">Activity</h3>
-        <canvas id="activity-steps-chart" class="charts"></canvas>
-        <canvas id="activity-stairs-chart" class="charts"></canvas>
-        <canvas id="activity-minutes-chart" class="charts"></canvas>
-        <canvas id="activity-miles-chart" class="charts"></canvas>
-        <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
-          All Steps this Week:
-          <span
-            class="main-center-weekly-stats--activity-all-week-steps-value"
-          ></span>
-        </h4>
+        <h3 class="main-bottom--weekly-stats--activity-title">Activity for the Week</h3>
+        <div class="activity-charts">
+        <article>
+          <canvas id="activity-steps-chart" class="charts" height="300"></canvas>
+        </article>
+        <article>
+          <canvas id="activity-stairs-chart" class="charts" height="300"></canvas>
+        </article>
+        <article>
+          <canvas id="activity-minutes-chart" class="charts" height="300"></canvas>
+        </article>
+        <article>
+          <canvas id="activity-miles-chart" class="charts" height="300"></canvas>
+        </article>
+        </div>
       </section>
       <section class="main-bottom--weekly-stats--sleep">
         <h3 class="main-bottom--weekly-stats--sleep-title">Sleep</h3>
-        <canvas id="sleep-hours-chart" class="charts"></canvas>
-        <canvas id="sleep-quality-chart" class="charts"></canvas>
-        <h3>
-          All User Average Sleep Hours:
-          <span class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average">#</span>
-        </h3>
-        <h3>
-          All User Average Sleep Quality:
-          <span class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average">#</span>
-        </h3>
+        <canvas id="sleep-hours-chart" class="charts" height="280"></canvas>
+        <canvas id="sleep-quality-chart" class="charts" height="280"></canvas>
       </section>
       <section class="main-bottom--weekly-stats--hydration">
         <h3 class="main-bottom--weekly-stats--hydration-title">
            Hydration
         </h3>
-        <canvas id="hydration-chart" class="charts"></canvas>
+        <canvas id="hydration-chart" class="charts" height="280"></canvas>
       </section>    
       <section class="right--friends-stats">
         <h3>Weekly Step Count:</h3>
@@ -169,7 +175,21 @@
         </h4>
       </section>
       <section class="user-ranks">
-        <p>hi</p>
+        <h3>Overall </h3>
+        <h4 class="main-center-weekly-stats--activity-all-week-steps-key">
+          All Steps this Week:
+          <span
+            class="main-center-weekly-stats--activity-all-week-steps-value"
+          ></span>
+        </h4>
+        <h3>
+            All User Average Sleep Hours:
+            <span class="main-bottom--sleep-card--hours-of-sleep-value sleep-count-average">#</span>
+          </h3>
+          <h3>
+            All User Average Sleep Quality:
+            <span class="main-bottom--sleep-card--quality-of-sleep-value sleep-quality-average">#</span>
+          </h3>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
