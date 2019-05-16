@@ -25,6 +25,7 @@ let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
 let activityRepository = new ActivityRepository(activityData, userData);
 let activity = new Activity(activityData, userData);
+
 let newDate = new Date();
 
 let randomIDs = generateUserIds()
@@ -52,6 +53,7 @@ function updateOnLoad() {
   compareThreeFriends();
   userIncrementDates(randomID);
   displayAverageStrideLength();
+  showWorstSleeper();
 }
 
 let user = new User(userData[randomID - 1]);
@@ -294,6 +296,11 @@ function compareThreeFriends() {
   let orderedSteps = friends.sort((a, b) => a.steps - b.steps).pop();
   $(".right--friends-stats--best-name").text(orderedSteps.name);
   $(".right--friends-stats--best-value").text(orderedSteps.steps);
+}
+
+function showWorstSleeper() {
+  console.log(sleepRepository.returnShortestDailySleeper(date.innerHTML))
+  // $(.right--friends-stats--worst-sleeper-name).text(returnShortestDailySleeper(date.innerHTML))
 }
 
 function displayAverageStrideLength() {
