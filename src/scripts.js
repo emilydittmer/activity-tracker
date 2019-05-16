@@ -35,7 +35,7 @@ const randomID3 = randomIDs[2]
 
 function updateOnLoad() {
   generateUserIds();
-  updateUserName();
+  updateUserInfo();
   updateStepCount();
   updateAverageStepCount();
   updateMostCommonState();
@@ -56,9 +56,11 @@ function updateOnLoad() {
 
 let user = new User(userData[randomID - 1]);
 
-function updateUserName() {
-  $(".aside--user-name").text(user.returnFirstName());
-}
+function updateUserInfo() {
+  $('.aside--user-name').text(user.returnFirstName());
+  $('.user-address').text(user.returnUserAdress());
+  $('.user-email').text(user.returnUserEmailAdress());
+ }
 
 function updateStepCount() {
   $(".aside--step-count-value").text(user.userData.dailyStepGoal);
@@ -187,6 +189,7 @@ function updateActivityToday() {
   $(".main-top--today-stats--activity-miles-walked--value").text(
     activity.userStepsToMilesInADay(randomID, date.innerHTML)
   );
+  $('.main-top--today-stats--activity-kilometers-walked--value').text(activity.userStepsToKilometersInADay(randomID, date.innerHTML));
 }
 
 function updateActivityWeek() {
@@ -379,7 +382,7 @@ var milesChart = new Chart(ctx, {
       datasets: [{
           label: 'Miles Walked',
           backgroundColor: 'rgb(74,189,172)',
-          data: [minutes[1], minutes[2], minutes[3], minutes[4], minutes[5], minutes[6]]
+          data: [miles[1], miles[2], miles[3], miles[4], miles[5], miles[6]]
       }]
   },
   options: {
@@ -419,7 +422,7 @@ var sleepQualityChart = new Chart(ctx, {
       labels: ['Yesterday', 'Two Days Ago', 'Three Days Ago', 'Four Days Ago', 'Five Days Ago', 'Six Days Ago'],
       datasets: [{
           label: 'Quality of Sleep',
-          borderColor: 'rgb(247,183,51)',
+          borderColor: 'rgb(74,189,172)',
           data: [sleepQuality[1], sleepQuality[2], sleepQuality[3], sleepQuality[4], sleepQuality[5], sleepQuality[6]]
       }]
   },

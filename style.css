@@ -6,7 +6,7 @@ body {
   font-family: 'M PLUS 1p', sans-serif;
   grid-template-columns: 25% 75%;
   height: 105vh;
-  background-color:lightgray;
+  background-color: rgba(216, 186, 155, .3);
 }
 
 header {
@@ -22,6 +22,11 @@ aside {
   grid-column: 1/2;
   background-color: rgba(74,189,172, 0.8);
   color: #fff;
+  padding: 10px;
+}
+
+li {
+  font-size: .9em;
 }
 
 main {
@@ -29,13 +34,23 @@ main {
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+h1 {
+  color: #fff;
+  font-weight: 900;
+  text-align: center;
+}
+
+.main-top--today--title {
+  text-align: center;
+}
 .user-image-container {
   text-align: center;
 }
 .user-image {
   border-radius: 50%;
-  border: solid 5px #FC4A1A;
-  height: 100px;
+  border: solid 5px rgb(247,183,51);
+  height: 120px;
   background-color: white;
   margin-top: 25px;
   text-align: center;
@@ -44,6 +59,7 @@ main {
 .aside--user-name {
   text-align: center;
   font-size: 2rem;
+  font-weight: 900;
 }
 
 hr {
@@ -52,7 +68,6 @@ hr {
 }
 
 .aside-info {
-  margin-left: 12px;
   margin-top: 5px;
   margin-right: 2px;
 }
@@ -66,22 +81,69 @@ hr {
   word-wrap: break-word;
 }
 
+.main-top--today-stats--activity-title,
+.main-top--today-stats--sleep-title,
+.main-top--today-stats--hydration-title,
+.main-bottom--weekly-stats--activity-title,
+.main-bottom--weekly-stats--sleep-title,
+.main-bottom--weekly-stats--hydration-title,
+.right--friends-stats--friends-title,
+.common-trends-title{
+  font-size: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.today-image {
+  height: 75px;
+  text-align: center;
+  margin: 30px;
+}
+
+.today-values,
+.today-keys {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .main-top--today-stats--activity {
   grid-row: 1/2;
   grid-template: 1/2;
   margin: 10px;
+  background-color: rgba(247,183,51, 0.8);
+  text-align: center;
+  border: 6px solid rgb(247,183,51);
+  border-radius: 5%;
 }
 
 .main-top--today-stats--sleep {
   grid-row: 1/2;
   grid-column: 2/3;
   margin: 10px;
+  background-color: rgba(252,74,26, 0.8);
+  text-align: center;
+  border: 6px solid rgb(252,74,26);
+  border-radius: 5%;
 }
 
 .main-top--today-stats--hydration {
   grid-row: 1/2;
   grid-column: 3/4;
   margin: 10px;
+  background-color: rgba(74,189,172, 0.8);
+  text-align: center;
+  border: 6px solid rgb(74,189,172);
+  border-radius: 5%;
+}
+
+.hydration-image {
+  margin-top: 40px;
+}
+
+.main-top--today-stats--hydration-numOunces-key,
+.main-top--today-stats--hydration-numOunces-value {
+  font-size: 1.2rem;
+  margin-top: 50px;
 }
 
 .main-bottom--weekly-stats--activity {
@@ -89,6 +151,14 @@ hr {
   grid-column: 1/3;
   margin: 10px;
   background-color: white;
+  border-radius: 5%;
+  border: 6px solid rgb(252,74,26);
+}
+
+.main-bottom--weekly-stats--activity-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .activity-charts {
@@ -108,7 +178,9 @@ hr {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background-color: purple;
+  background-color: #fff;
+  border: 6px solid rgb(247,183,51);
+  border-radius: 5%;
   margin: 10px;
   padding: 5px;
 }
@@ -117,47 +189,29 @@ hr {
   grid-row: 4/-1;
   grid-column: 3/-1;
   margin: 10px;
+  background-color: white;
+  border-radius: 5%;
+  border: 6px solid rgb(74,189,172);
 }
 
 .right--friends-stats {
   grid-row: 4/-1;
   grid-column: 1/2;
   margin: 10px;
+  border-radius: 5%;
+  border: 6px solid rgb(252,74,26);
+  background-color: rgba(252,74,26, 0.8);
 }
 
 .user-ranks {
   grid-row: 4/-1;
   grid-column: 2/3;
   margin: 10px;
-}
-.today-image {
-  height: 60px;
-  text-align: center;
-}
-
-.main-top--today-stats--activity {
-  background-color: yellow;
-  text-align: center;
-  margin: 10px;
+  border-radius: 5%;
+  border: 6px solid rgb(247,183,51);
+  background-color: rgba(247,183,51, 0.8);
 }
 
-.main-top--today-stats--sleep {
-  background-color: blue;
-  text-align: center;
-  margin: 10px;
-}
-
-.main-top--today-stats--hydration {
-  background-color: orange;
-  text-align: center;
-  margin: 10px;
-}
-
-.today-values,
-.today-keys {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
 /* .main-top-today-stats--all-stats {
   background-color: rgba(247,183,51, 0.1);
   margin-top: 0;
@@ -167,14 +221,7 @@ hr {
 
 
 
-.main-top--today-stats--activity-title,
-.main-top--today-stats--sleep-title,
-.main-top--today-stats--hydration-title,
-.main-bottom--weekly-stats--activity-title,
-.main-bottom--weekly-stats--sleep-title,
-.main-bottom--weekly-stats--hydration-title {
-  font-size: 1.5rem;
-}
+
 
 .main-top--today-stats--sleep-hours-key,
 .main-top--today-stats--sleep-hours-value {

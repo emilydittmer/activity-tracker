@@ -8,6 +8,16 @@ class User {
     return firstName[0];
   }
 
+  returnUserAdress() {
+    let userAddress = this.userData.address;
+    return userAddress;
+  }
+ 
+  returnUserEmailAdress() {
+    let userEmailAddress = this.userData.email;
+    return userEmailAddress;
+  }
+
 }
 if (typeof module !== 'undefined') {
   module.exports = User;
